@@ -1,101 +1,198 @@
-import Image from "next/image";
+// pages/festivals.tsx
+"use client";
 
-export default function Home() {
+import React, { useState } from 'react';
+import { festivalsData, Festival, Day } from './festivalsData';
+import './styles/FestivalsPage.css';
+import './styles/theme.css';
+import {  Table,  TableHeader,  TableBody,  TableColumn,  TableRow,  TableCell} from "@nextui-org/table";
+
+
+const FestivalsPage: React.FC = () => {
+  const [selectedFestival, setSelectedFestival] = useState<Festival>(festivalsData[0]);
+  const [selectedDate, setSelectedDate] = useState<string>('2023-07-01');
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [modalLocation, setModalLocation] = useState<string>('');
+
+  const handleFestivalChange = (festival: Festival) => {
+    setSelectedFestival(festival);
+  };
+
+  const handleDateChange = (date: string) => {
+    setSelectedDate(date);
+  };
+
+  const getAllEventsForDay = (date: string) => {
+    return festivalsData.flatMap(festival =>
+      festival.days
+        .filter(day => day.date === date)
+        .flatMap(day => day.events.map(event => ({ ...event, festivalName: festival.name, location: festival.location })))
+    );
+  };
+
+  const aggregateEventsByFestival = (events: { time: string; description: string; location: string; festivalName: string }[]) => {
+    const aggregated: { [key: string]: { times: string[], descriptions: string[], location: string } } = {};
+
+    events.forEach(event => {
+      if (!aggregated[event.festivalName]) {
+        aggregated[event.festivalName] = { times: [], descriptions: [], location: event.location };
+      }
+      aggregated[event.festivalName].times.push(event.time);
+      aggregated[event.festivalName].descriptions.push(event.description);
+    });
+
+    return Object.entries(aggregated).map(([festivalName, data]) => {
+      const timeRange = `${data.times[0]} - ${data.times[data.times.length - 1]}`;
+      return {
+        festivalName,
+        timeRange,
+        descriptions: data.descriptions.join(', '),
+        location: data.location,
+      };
+    });
+  };
+
+  const allEventsForSelectedDay = getAllEventsForDay(selectedDate);
+  const aggregatedEvents = aggregateEventsByFestival(allEventsForSelectedDay);
+
+  const selectedDay = selectedFestival.days.find(day => day.date === selectedDate);
+
+  const openModal = (location: string) => {
+    setModalLocation(location);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalLocation('');
+  };
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="page-container">
+      <h1 className="page-title">Calgary Stampede Music Festivals</h1>
+      <div className="date-buttons">
+        {selectedFestival.days.map((day, index) => (
+          <button
+            key={index}
+            onClick={() => handleDateChange(day.date)}
+            className={`date-button ${selectedDate === day.date ? 'date-button-selected' : 'date-button-unselected'}`}
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            {new Date(day.date).toDateString()}
+          </button>
+        ))}
+      </div>
+      <div className="summary-container">
+        <h2 className="summary-title">Summary of All Festivals on {new Date(selectedDate).toDateString()}</h2>
+        <Table isStriped aria-label="Summary of All Festivals">
+          <TableHeader>
+            <TableColumn>Festival</TableColumn>
+            <TableColumn>Time Range</TableColumn>
+            <TableColumn>Events</TableColumn>
+            <TableColumn>Location</TableColumn>
+            <TableColumn>Ticket Tiers</TableColumn>
+          </TableHeader>
+          <TableBody>
+            {aggregatedEvents.map((event, index) => (
+              <TableRow key={index}>
+          <TableCell>
+            <span
+              className="cursor-pointer text-blue-500"
+              onClick={() => handleFestivalChange(festivalsData.find(festival => festival.name === event.festivalName)!)}
+            >
+              {event.festivalName}
+            </span>
+          </TableCell>
+          <TableCell>{event.timeRange}</TableCell>
+          <TableCell>{event.descriptions}</TableCell>
+          <TableCell>
+            <button
+              className="text-blue-500 underline"
+              onClick={() => openModal(event.location)}
+            >
+              {event.location}
+            </button>
+          </TableCell>
+          <TableCell>
+            {festivalsData.find(festival => festival.name === event.festivalName)?.ticketTiers.map((tier, tierIndex) => (
+              <div key={tierIndex}>
+                <a href={tier.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+            {tier.tier}: {tier.price}
+                </a>
+              </div>
+            ))}
+          </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+      <div className="festival-buttons">
+        {festivalsData.map((festival) => (
+          <button
+            key={festival.name}
+            onClick={() => handleFestivalChange(festival)}
+            className={`festival-button ${selectedFestival.name === festival.name ? 'festival-button-selected' : 'festival-button-unselected'}`}
           >
-            Read our docs
-          </a>
+            {festival.name}
+          </button>
+        ))}
+      </div>
+      <div className="festival-details">
+        <h2 className="festival-title">{selectedFestival.name}</h2>
+        <p className="festival-date">{new Date(selectedDate).toDateString()}</p>
+        <p className="festival-location">
+          Location: <button className="festival-location-button" onClick={() => openModal(selectedFestival.location)}>{selectedFestival.location}</button>
+        </p>
+        <div className="festival-image-container">
+          <img
+            src={selectedFestival.image}
+            alt={selectedFestival.name}
+            className="festival-image"
+            width={300}
+            height={200}
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <table className="table">
+          <thead>
+            <tr>
+              <th className="border px-4 py-2">Time</th>
+              <th className="border px-4 py-2">Event</th>
+            </tr>
+          </thead>
+          <tbody>
+            {selectedDay?.events.map((event, index) => (
+              <tr key={index} className="table-row">
+                <td className="border px-4 py-2">{event.time}</td>
+                <td className="border px-4 py-2">{event.description}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2 className="modal-title">Location</h2>
+            <iframe
+              src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=${encodeURIComponent(modalLocation)}`}
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+            ></iframe>
+            <button
+              className="modal-close-button"
+              onClick={closeModal}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
-}
+};
+
+export default FestivalsPage;
