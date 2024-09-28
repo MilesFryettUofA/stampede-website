@@ -5,7 +5,36 @@ import React, { useState } from 'react';
 import { festivalsData, Festival, Day } from './festivalsData';
 import './styles/FestivalsPage.css';
 import './styles/theme.css';
-import {  Table,  TableHeader,  TableBody,  TableColumn,  TableRow,  TableCell} from "@nextui-org/table";
+import {
+  Table,
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+  Input,
+  Button,
+  DropdownTrigger,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Chip,
+  User,
+  Pagination,
+  Tab,
+  Tabs,
+  NextUIProvider, 
+  createTheme,
+  
+} from "@nextui-org/react";
+import MyCalendar from './Calendar';
+import moment from 'moment';
+import 'moment-timezone' // or 'moment-timezone/builds/moment-timezone-with-data[-datarange].js'. See their docs
+
+// Set the IANA time zone you want to use
+moment.tz.setDefault('america/denver')
+
+
 
 
 const FestivalsPage: React.FC = () => {
@@ -67,64 +96,88 @@ const FestivalsPage: React.FC = () => {
     setModalLocation('');
   };
 
+
+
+  const calendarEvents = festivalsData.flatMap(festival =>
+    festival.days.flatMap(day =>
+      day.events.map(event => ({
+        title: festival.name + ' - ' + event.description,
+        start: new Date(moment(`${day.date} ${event.time}`, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DDTHH:mm:ssZ')),
+        end: new Date(moment(`${day.date} ${event.time}`, 'YYYY-MM-DD HH:mm').add(1.5, 'hour').format('YYYY-MM-DDTHH:mm:ssZ')), // Assuming each event lasts 1 hour
+      }))
+    )
+  );
+
   return (
     <div className="page-container">
       <h1 className="page-title">Calgary Stampede Music Festivals</h1>
-      <div className="date-buttons">
-        {selectedFestival.days.map((day, index) => (
-          <button
-            key={index}
-            onClick={() => handleDateChange(day.date)}
-            className={`date-button ${selectedDate === day.date ? 'date-button-selected' : 'date-button-unselected'}`}
-          >
-            {new Date(day.date).toDateString()}
-          </button>
-        ))}
-      </div>
+
+      
       <div className="summary-container">
+        <div className='overflow-x-auto'>
+      <Tabs
+        aria-label="Festival Dates"
+        selectedKey={selectedDate}
+        fullWidth
+        onSelectionChange={(key) => handleDateChange(key as string)}
+        className='flex flex-wrap justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8'
+        color = {"warning"}
+      >
+        {selectedFestival.days.map((day) => (
+          <Tab key={day.date} title={new Date(day.date).toDateString()} />
+        ))}
+      </Tabs>
+      </div>
         <h2 className="summary-title">Summary of All Festivals on {new Date(selectedDate).toDateString()}</h2>
-        <Table isStriped aria-label="Summary of All Festivals">
-          <TableHeader>
-            <TableColumn>Festival</TableColumn>
-            <TableColumn>Time Range</TableColumn>
-            <TableColumn>Events</TableColumn>
-            <TableColumn>Location</TableColumn>
-            <TableColumn>Ticket Tiers</TableColumn>
-          </TableHeader>
+        <Table className='w-full text-2xl' isStriped aria-label="Summary of All Festivals">
+            <TableHeader className='text-3xl'>
+            <TableColumn className='text-3xl mobile-text-md'>Festival</TableColumn>
+            <TableColumn className='text-3xl mobile-text-md'>Time Range</TableColumn>
+            <TableColumn className='text-3xl mobile-text-md'>Events</TableColumn>
+            <TableColumn className='text-3xl mobile-text-md'>Location</TableColumn>
+            <TableColumn className='text-3xl mobile-text-md'>Ticket Tiers</TableColumn>
+            </TableHeader>
           <TableBody>
             {aggregatedEvents.map((event, index) => (
               <TableRow key={index}>
-          <TableCell>
+            <TableCell className="text-2xl mobile-text-md">
             <span
               className="cursor-pointer text-blue-500"
               onClick={() => handleFestivalChange(festivalsData.find(festival => festival.name === event.festivalName)!)}
             >
               {event.festivalName}
             </span>
-          </TableCell>
-          <TableCell>{event.timeRange}</TableCell>
-          <TableCell>{event.descriptions}</TableCell>
-          <TableCell>
+            </TableCell>
+            <TableCell className="text-2xl mobile-text-md">{event.timeRange}</TableCell>
+            <TableCell className="text-2xl mobile-text-md">{event.descriptions}</TableCell>
+            <TableCell className="text-2xl mobile-text-md">
             <button
               className="text-blue-500 underline"
               onClick={() => openModal(event.location)}
             >
               {event.location}
             </button>
-          </TableCell>
-          <TableCell>
+            </TableCell>
+            <TableCell className="text-2xl mobile-text-md">
             {festivalsData.find(festival => festival.name === event.festivalName)?.ticketTiers.map((tier, tierIndex) => (
               <div key={tierIndex}>
-                <a href={tier.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
-            {tier.tier}: {tier.price}
-                </a>
+              <a href={tier.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+              {tier.tier}: {tier.price}
+              </a>
               </div>
             ))}
-          </TableCell>
+            </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
+        <div className="calendar-container">
+      <MyCalendar 
+        events={calendarEvents} 
+        selectedDate={new Date(moment(selectedDate, 'YYYY-MM-DD').format('YYYY-MM-DDTHH:mm:ssZ'))} 
+        onDateChange={(date: Date) => handleDateChange(moment(date).format('YYYY-MM-DDTHH:mm:ssZ'))} 
+      />
+    </div>
       </div>
       <div className="festival-buttons">
         {festivalsData.map((festival) => (
