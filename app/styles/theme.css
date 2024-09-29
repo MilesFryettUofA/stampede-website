@@ -2,9 +2,11 @@
 
 :root {
     --bg-color: #e9e9e9; 
-    --primary-color: #edb518;
+    --bg-color-secondary: #ffffff;
+    --primary-color: #8b8b8ba4;
     --secondary-color: #edb418ad; 
     --text-color: #000407; 
+    --text-color-light: #ffffff;
     --hover-bg-color: #f3f4f6; 
     --border-color: #0e1624;
     --modal-bg-color: rgba(0, 0, 0, 0.5);

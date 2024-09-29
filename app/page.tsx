@@ -24,12 +24,18 @@ import {
   Tab,
   Tabs,
   NextUIProvider, 
-  createTheme,
-  
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  ModalContent,
+
+
 } from "@nextui-org/react";
 import MyCalendar from './Calendar';
 import moment from 'moment';
 import 'moment-timezone' // or 'moment-timezone/builds/moment-timezone-with-data[-datarange].js'. See their docs
+import StampedeLogo from './img/Calgary_Stampede_Logo.png'; // Import the image
 
 // Set the IANA time zone you want to use
 moment.tz.setDefault('america/denver')
@@ -98,6 +104,7 @@ const FestivalsPage: React.FC = () => {
 
 
 
+
   const calendarEvents = festivalsData.flatMap(festival =>
     festival.days.flatMap(day =>
       day.events.map(event => ({
@@ -109,27 +116,40 @@ const FestivalsPage: React.FC = () => {
   );
 
   return (
-    <div className="page-container">
-      <h1 className="page-title">Calgary Stampede Music Festivals</h1>
+    <div className="page-container" color="primary">
+      <span style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}> 
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Calgary_Stampede_Logo.svg/2560px-Calgary_Stampede_Logo.svg.png?20110803212241"
+          alt="Calgary Stampede Logo"
+          width={300}
+          height={200}
+        />
+        <h1 className="page-title">ONE</h1>
+      </span>
 
       
       <div className="summary-container">
-        <div className='overflow-x-auto'>
+        <h2 className="summary-title">All Events During {new Date(selectedDate).toDateString()}</h2>
+
+        <div className='overflow-x-auto tab-sty'>
       <Tabs
         aria-label="Festival Dates"
         selectedKey={selectedDate}
         fullWidth
         onSelectionChange={(key) => handleDateChange(key as string)}
-        className='flex flex-wrap justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8'
-        color = {"warning"}
+        className='flex flex-wrap justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 light large'
+        color='primary'
       >
         {selectedFestival.days.map((day) => (
-          <Tab key={day.date} title={new Date(day.date).toDateString()} />
+          <Tab
+            className='light'
+            key={day.date}
+            title={new Date(day.date).toDateString()} 
+          />
         ))}
       </Tabs>
       </div>
-        <h2 className="summary-title">Summary of All Festivals on {new Date(selectedDate).toDateString()}</h2>
-        <Table className='w-full text-2xl' isStriped aria-label="Summary of All Festivals">
+        <Table className='w-full text-2xl light' isStriped aria-label="Summary of All Festivals" color='default'>
             <TableHeader className='text-3xl'>
             <TableColumn className='text-3xl mobile-text-md'>Festival</TableColumn>
             <TableColumn className='text-3xl mobile-text-md'>Time Range</TableColumn>
@@ -151,12 +171,7 @@ const FestivalsPage: React.FC = () => {
             <TableCell className="text-2xl mobile-text-md">{event.timeRange}</TableCell>
             <TableCell className="text-2xl mobile-text-md">{event.descriptions}</TableCell>
             <TableCell className="text-2xl mobile-text-md">
-            <button
-              className="text-blue-500 underline"
-              onClick={() => openModal(event.location)}
-            >
-              {event.location}
-            </button>
+            <Button onClick={() => openModal(event.location)}>{event.location}</Button>
             </TableCell>
             <TableCell className="text-2xl mobile-text-md">
             {festivalsData.find(festival => festival.name === event.festivalName)?.ticketTiers.map((tier, tierIndex) => (
@@ -177,20 +192,23 @@ const FestivalsPage: React.FC = () => {
         selectedDate={new Date(moment(selectedDate, 'YYYY-MM-DD').format('YYYY-MM-DDTHH:mm:ssZ'))} 
         onDateChange={(date: Date) => handleDateChange(moment(date).format('YYYY-MM-DDTHH:mm:ssZ'))} 
       />
-    </div>
+        </div>
       </div>
-      <div className="festival-buttons">
-        {festivalsData.map((festival) => (
-          <button
-            key={festival.name}
-            onClick={() => handleFestivalChange(festival)}
-            className={`festival-button ${selectedFestival.name === festival.name ? 'festival-button-selected' : 'festival-button-unselected'}`}
-          >
-            {festival.name}
-          </button>
-        ))}
+      <div className="overflow-x-auto">
+        <Tabs
+          aria-label="Festivals"
+          selectedKey={selectedFestival.name}
+          fullWidth
+          onSelectionChange={(key) => handleFestivalChange(festivalsData.find(festival => festival.name === key)!)}
+          className='flex flex-wrap justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8'
+          color={"warning"}
+        >
+          {festivalsData.map((festival) => (
+            <Tab key={festival.name} title={festival.name} />
+          ))}
+        </Tabs>
       </div>
-      <div className="festival-details">
+      <div className="summary-container">
         <h2 className="festival-title">{selectedFestival.name}</h2>
         <p className="festival-date">{new Date(selectedDate).toDateString()}</p>
         <p className="festival-location">
@@ -205,45 +223,47 @@ const FestivalsPage: React.FC = () => {
             height={200}
           />
         </div>
-        <table className="table">
-          <thead>
-            <tr>
-              <th className="border px-4 py-2">Time</th>
-              <th className="border px-4 py-2">Event</th>
-            </tr>
-          </thead>
-          <tbody>
-            {selectedDay?.events.map((event, index) => (
-              <tr key={index} className="table-row">
-                <td className="border px-4 py-2">{event.time}</td>
-                <td className="border px-4 py-2">{event.description}</td>
-              </tr>
+        <Table className='w-full text-2xl' isStriped aria-label="Events for Selected Day">
+          <TableHeader className='text-3xl'>
+            <TableColumn className='text-3xl mobile-text-md'>Time</TableColumn>
+            <TableColumn className='text-3xl mobile-text-md'>Event</TableColumn>
+          </TableHeader>
+          <TableBody>
+            {(selectedDay?.events ?? []).map((event, index) => (
+              <TableRow key={index} className="table-row">
+                <TableCell className="text-2xl mobile-text-md">{event.time}</TableCell>
+                <TableCell className="text-2xl mobile-text-md">{event.description}</TableCell>
+              </TableRow>
             ))}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
-
-      {isModalOpen && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h2 className="modal-title">Location</h2>
-            <iframe
-              src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=${encodeURIComponent(modalLocation)}`}
-              width="100%"
-              height="450"
-              style={{ border: 0 }}
-              allowFullScreen={true}
-              loading="lazy"
-            ></iframe>
-            <button
-              className="modal-close-button"
-              onClick={closeModal}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+      <Modal
+        closeButton
+        aria-labelledby="modal-title"
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      >
+        <ModalContent>
+        <ModalHeader> Location
+        </ModalHeader>
+        <ModalBody>
+          <iframe
+            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=${encodeURIComponent(modalLocation)}`}
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            loading="eager"
+          ></iframe>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="danger" onClick={closeModal}>
+            Close
+          </Button>
+        </ModalFooter>
+        </ModalContent>
+      </Modal>
     </div>
   );
 };

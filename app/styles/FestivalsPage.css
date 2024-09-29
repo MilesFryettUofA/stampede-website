@@ -6,71 +6,21 @@
   min-height: 100vh;
   padding: 2rem;
   padding-bottom: 5rem;
-  background-color: var(--bg-color);
+  background-color: #edecec;
 }
 
 .page-title {
-  font-size: 1.875rem; /* text-3xl */
+  font-size: 4rem; /* text-3xl */
   font-weight: bold;
   margin-bottom: 2rem;
   text-align: center;
-  color: var(--text-color);
-}
-
-.date-buttons {
-  margin-bottom: 1rem;
-  display: flex;
-  background-color: var(--secondary-color);
-  justify-content: center;
-  flex-wrap: fit-content;
-  margin: 20px;
-}
-
-.date-button  {
-  color: white;
-  text-decoration: none;
-  font-size: 25px;
-  border: none;
-  background: none;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-}
-
-.date-button::before {
-  margin-left: auto;
-}
-
-.date-button::after, .date-button::before {
-  content: '';
-  width: 0%;
-  height: 3px;
-  background: var(--selected-color);
-  display: block;
-  transition: 0.5s;
-}
-
-.date-button:hover::after, .date-button:hover::before {
-  width: 100%;
-}
-
-.date-button-selected {
-  background-color: var(--selected-color);
-  color: var(--selected-text-color);
-  transition: 0.5s;
-
-}
-
-.date-button-unselected {
-  background-color: none;
-  color: var(--text-color);
-  transition: 0.5s;
-
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  font-family: 'Roboto', sans-serif; /* Use a modern font */
 }
 
 .summary-container {
-
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  background-color: var(--modal-content-bg-color);
+  background-color: var(--bg-color-secondary);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
 .summary-title {
@@ -78,17 +28,12 @@
   font-weight: 600;
   margin-top: 1rem;
   text-align: center;
-  color: var(--text-color);
+  color: #D60000;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  font-family: 'Roboto', sans-serif; /* Use a modern font */
+
 }
-
-
-/*	
-	Table Responsive
-	===================
-	Author: https://github.com/pablorgarcia
- */
-
-
  
  body {
    font-family: 'Open Sans', sans-serif;
@@ -103,18 +48,9 @@
    font-weight: 300;
    line-height:1em;
    text-align: center;
-   color: #4DC3FA;
+   color: #D60000;
  }
  
- h2 {
-   font-size:1em; 
-   font-weight: 300;
-   text-align: center;
-   display: block;
-   line-height:1em;
-   padding-bottom: 2em;
-   color: #FB667A;
- }
  
  h2 a {
    font-weight: 700;
@@ -132,40 +68,6 @@
 }
 
 
-.table {
-    background-color: #FB667A;
-}
-
-
-.festival-buttons {
-  margin-bottom: 2rem;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.festival-button {
-  padding: 0.5rem 1rem;
-  margin: 0.5rem;
-  border-radius: 9999px; /* Full rounded corners for pill shape */
-  border: 1px solid var(--border-color);
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.festival-button-selected {
-  background-color: var(--primary-color);
-  color: white;
-}
-
-.festival-button-unselected {
-  background-color: var(--secondary-color);
-  color: var(--text-color);
-}
-
-.festival-button:hover {
-  background-color: var(--hover-bg-color);
-  color: var(--text-color);
-}
 
 .festival-details {
   border: 1px solid var(--border-color);
@@ -204,35 +106,3 @@
   border-radius: 0.5rem;
 }
 
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--modal-bg-color);
-}
-
-.modal-content {
-  background-color: var(--modal-content-bg-color);
-  padding: 2rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  max-width: 32rem;
-  width: 100%;
-}
-
-.modal-title {
-  font-size: 1.25rem; /* text-xl */
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--text-color);
-}
-
-.modal-close-button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: var(--primary-color);
-  color: white;
-  border-radius: 0.5rem;
-}
