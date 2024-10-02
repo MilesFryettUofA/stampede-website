@@ -28,7 +28,7 @@ const hashCode = (str: string) => {
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
     const char = str.charCodeAt(i);
-    hash = (hash << 5) - hash + char;
+    hash = (hash << 19) - hash + char;
     hash |= 0; // Convert to 32bit integer
   }
   return hash;
@@ -36,12 +36,10 @@ const hashCode = (str: string) => {
 
 const getEventStyle = (event: { title: string; }) => {
   const colors = [
-    '#FF5733', // Red
-    '#33FF57', // Green
-    '#3357FF', // Blue
-    '#FF33A1', // Pink
-    '#FF8C33', // Orange
-    '#8C33FF', // Purple
+    '#FFCCCC', '#FF9999', '#FF6666', '#FF3333', '#CC0000',
+    '#990000', '#660000', '#330000', '#FFB3B3', '#FF8080',
+    '#FF4D4D', '#FF1A1A', '#E60000', '#B30000', '#800000',
+    '#4D0000', '#FF9999', '#FF6666', '#FF3333', '#CC0000'
   ];
 
   // Assign a color based on the event title's hash code

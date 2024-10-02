@@ -139,6 +139,7 @@ const FestivalsPage: React.FC = () => {
         onSelectionChange={(key) => handleDateChange(key as string)}
         className='flex flex-wrap justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 light large'
         color='primary'
+        radius='sm'
       >
         {selectedFestival.days.map((day) => (
           <Tab
@@ -150,38 +151,43 @@ const FestivalsPage: React.FC = () => {
       </Tabs>
       </div>
         <Table className='w-full text-2xl light' isStriped aria-label="Summary of All Festivals" color='default'>
-            <TableHeader className='text-3xl'>
-            <TableColumn className='text-3xl mobile-text-md'>Festival</TableColumn>
-            <TableColumn className='text-3xl mobile-text-md'>Time Range</TableColumn>
-            <TableColumn className='text-3xl mobile-text-md'>Events</TableColumn>
-            <TableColumn className='text-3xl mobile-text-md'>Location</TableColumn>
-            <TableColumn className='text-3xl mobile-text-md'>Ticket Tiers</TableColumn>
+            <TableHeader>
+            <TableColumn><p className='tb-header'> Event</p></TableColumn>
+            <TableColumn><p className='tb-header'>Time Range</p></TableColumn>
+            <TableColumn><p className='tb-header'>Events</p></TableColumn>
+            <TableColumn><p className='tb-header'>Location</p></TableColumn>
+            <TableColumn><p className='tb-header'>Ticket Tiers</p></TableColumn>
             </TableHeader>
           <TableBody>
             {aggregatedEvents.map((event, index) => (
               <TableRow key={index}>
-            <TableCell className="text-2xl mobile-text-md">
-            <span
-              className="cursor-pointer text-blue-500"
-              onClick={() => handleFestivalChange(festivalsData.find(festival => festival.name === event.festivalName)!)}
-            >
-              {event.festivalName}
-            </span>
-            </TableCell>
-            <TableCell className="text-2xl mobile-text-md">{event.timeRange}</TableCell>
-            <TableCell className="text-2xl mobile-text-md">{event.descriptions}</TableCell>
-            <TableCell className="text-2xl mobile-text-md">
-            <Button onClick={() => openModal(event.location)}>{event.location}</Button>
-            </TableCell>
-            <TableCell className="text-2xl mobile-text-md">
-            {festivalsData.find(festival => festival.name === event.festivalName)?.ticketTiers.map((tier, tierIndex) => (
-              <div key={tierIndex}>
-              <a href={tier.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
-              {tier.tier}: {tier.price}
-              </a>
-              </div>
-            ))}
-            </TableCell>
+                <TableCell>
+                <span
+                  className="cursor-pointer text-blue-500"
+                  onClick={() => handleFestivalChange(festivalsData.find(festival => festival.name === event.festivalName)!)}
+                >
+                  <p className='tb-body'>{event.festivalName}</p>
+                </span>
+                </TableCell>
+                <TableCell><p className='tb-body'>{event.timeRange}</p></TableCell>
+                <TableCell><p className='tb-body'>{event.descriptions}</p></TableCell>
+                <TableCell>
+                  <span
+                    className="cursor-pointer text-blue-500"
+                    onClick={() => openModal(event.location)}
+                  >
+                    <p className='tb-body underline'>{event.festivalName}</p>
+                  </span>
+                </TableCell>
+                <TableCell>
+                {festivalsData.find(festival => festival.name === event.festivalName)?.ticketTiers.map((tier, tierIndex) => (
+                  <div key={tierIndex}>
+                  <a href={tier.url} target="_blank" rel="noopener noreferrer" className="tb-body underline">
+                  {tier.tier}: {tier.price}
+                  </a>
+                  </div>
+                ))}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -200,8 +206,10 @@ const FestivalsPage: React.FC = () => {
           selectedKey={selectedFestival.name}
           fullWidth
           onSelectionChange={(key) => handleFestivalChange(festivalsData.find(festival => festival.name === key)!)}
-          className='flex flex-wrap justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8'
-          color={"warning"}
+          className='flex flex-wrap justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 light large'
+          color='primary'
+          radius='sm'
+          variant='bordered'
         >
           {festivalsData.map((festival) => (
             <Tab key={festival.name} title={festival.name} />
@@ -223,16 +231,16 @@ const FestivalsPage: React.FC = () => {
             height={200}
           />
         </div>
-        <Table className='w-full text-2xl' isStriped aria-label="Events for Selected Day">
-          <TableHeader className='text-3xl'>
-            <TableColumn className='text-3xl mobile-text-md'>Time</TableColumn>
-            <TableColumn className='text-3xl mobile-text-md'>Event</TableColumn>
+        <Table className='w-full text-2xl light' isStriped aria-label="Summary of an event" color='default'>
+          <TableHeader>
+            <TableColumn><p className='tb-header'>Time</p></TableColumn>
+            <TableColumn><p className='tb-header'>Event</p></TableColumn>
           </TableHeader>
           <TableBody>
             {(selectedDay?.events ?? []).map((event, index) => (
               <TableRow key={index} className="table-row">
-                <TableCell className="text-2xl mobile-text-md">{event.time}</TableCell>
-                <TableCell className="text-2xl mobile-text-md">{event.description}</TableCell>
+                <TableCell><p className='tb-body'>{event.time}</p></TableCell>
+                <TableCell><p className='tb-body'>{event.description}</p></TableCell>
               </TableRow>
             ))}
           </TableBody>
