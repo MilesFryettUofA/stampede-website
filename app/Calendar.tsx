@@ -1,9 +1,10 @@
-import React from 'react';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
+import React from 'react'
+import { Calendar, momentLocalizer,} from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'moment-timezone' // or 'moment-timezone/builds/moment-timezone-with-data[-datarange].js'. See their docs
 import './Styles/Calendar.css'; // Import custom CSS
+
 
 // Set the IANA time zone you want to use
 moment.tz.setDefault('america/denver')
@@ -59,9 +60,8 @@ const getEventStyle = (event: { title: string; }) => {
 };
 
 const MyCalendar = ({ events, selectedDate, onDateChange }: MyCalendarProps) => {
-  const minTime = new Date();
-  minTime.setHours(12, 30, 0, 0);
-
+  const StartTime = new Date();
+  StartTime.setHours(12, 30, 0, 0);
   const convertToMST = (date: Date) => {
     return moment(date).tz('America/Denver').toDate();
   };
@@ -73,7 +73,7 @@ const MyCalendar = ({ events, selectedDate, onDateChange }: MyCalendarProps) => 
   }));
 
   return (
-    <div style={{ height: '500px' }}>
+    <div style={{ height: '80vh', minHeight: '500px' }}>
       <Calendar
         localizer={localizer}
         events={eventsInMST}
@@ -84,10 +84,9 @@ const MyCalendar = ({ events, selectedDate, onDateChange }: MyCalendarProps) => 
         style={{ height: '100%' }}
         date={selectedDate}
         onNavigate={date => onDateChange(date)}
-        step={30} // Set the time slot step to 30 minutes
-        timeslots={1} // Number of time slots per step
+        timeslots={2} // Number of time slots per step
         dayLayoutAlgorithm={'no-overlap'} // Prevent events from overlapping
-        min={convertToMST(minTime)} // Set the calendar to start at 9 AM
+        scrollToTime={convertToMST(StartTime)} // Set the calendar to start at 9 AM
         eventPropGetter={getEventStyle} // Use custom event styles        
         toolbar={false} // Hide the toolbar
       />

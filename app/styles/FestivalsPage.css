@@ -110,6 +110,7 @@
 }
 
 .festival-image-container {
+  margin: 1rem;
   display: flex;
   justify-content: center;
   margin-top: 1rem;
@@ -119,3 +120,15 @@
   border-radius: 0.5rem;
 }
 
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 1rem;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

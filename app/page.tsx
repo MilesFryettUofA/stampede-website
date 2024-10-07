@@ -35,11 +35,11 @@ import {
 import MyCalendar from './Calendar';
 import moment from 'moment';
 import 'moment-timezone' // or 'moment-timezone/builds/moment-timezone-with-data[-datarange].js'. See their docs
-import StampedeLogo from './img/Calgary_Stampede_Logo.png'; // Import the image
+import SocialMedia from './socialmedia'; // Import the SocialMedia component
+
 
 // Set the IANA time zone you want to use
 moment.tz.setDefault('america/denver')
-
 
 
 
@@ -106,16 +106,23 @@ const FestivalsPage: React.FC = () => {
 
 
   const calendarEvents = festivalsData.flatMap(festival =>
-    festival.days.flatMap(day =>
-      day.events.map(event => ({
-        title: festival.name + ' - ' + event.description,
-        start: new Date(moment(`${day.date} ${event.time}`, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DDTHH:mm:ssZ')),
-        end: new Date(moment(`${day.date} ${event.time}`, 'YYYY-MM-DD HH:mm').add(1.5, 'hour').format('YYYY-MM-DDTHH:mm:ssZ')), // Assuming each event lasts 1 hour
-      }))
-    )
-  );
+  festival.days.flatMap(day =>
+    day.events.map(event => {
+      const startTime = moment.tz(`${day.date} ${event.time}`, 'YYYY-MM-DD h:mm A', 'America/Denver').toDate();
+      const endTime = moment(startTime).add(event.duration, 'hours').toDate();
+
+      return {
+        title: `${festival.name} - ${event.description}`,
+        start: startTime,
+        end: endTime,
+      };
+    })
+  )
+);
+
 
   return (
+    
     <div className="page-container" color="primary">
       <span style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}> 
         <img
@@ -180,7 +187,7 @@ const FestivalsPage: React.FC = () => {
                   </span>
                 </TableCell>
                 <TableCell>
-                {festivalsData.find(festival => festival.name === event.festivalName)?.ticketTiers.map((tier, tierIndex) => (
+                {selectedDay?.ticketTiers?.map((tier: { tier: string; price: string; url: string }, tierIndex: number) => (
                   <div key={tierIndex}>
                   <a href={tier.url} target="_blank" rel="noopener noreferrer" className="tb-body underline">
                   {tier.tier}: {tier.price}
@@ -217,32 +224,61 @@ const FestivalsPage: React.FC = () => {
         </Tabs>
       </div>
       <div className="summary-container">
-        <h2 className="festival-title">{selectedFestival.name}</h2>
-        <p className="festival-date">{new Date(selectedDate).toDateString()}</p>
-        <p className="festival-location">
-          Location: <button className="festival-location-button" onClick={() => openModal(selectedFestival.location)}>{selectedFestival.location}</button>
-        </p>
-        <div className="festival-image-container">
-          <img
-            src={selectedFestival.image}
-            alt={selectedFestival.name}
-            className="festival-image"
-            width={300}
-            height={200}
+      <div className="row">
+        <div className="column">
+          <SocialMedia
+            selectedFestival={selectedFestival}
+            handleFestivalChange={handleFestivalChange}
           />
         </div>
-        <Table className='w-full text-2xl light' isStriped aria-label="Summary of an event" color='default'>
+        <div className="column">
+          <h2 className="festival-title">{selectedFestival.name}</h2>
+            <p className="festival-date">{new Date(selectedDate).toDateString()}</p>
+            <p className="festival-location">
+              Location: <button className="festival-location-button" onClick={() => openModal(selectedFestival.location)}>{selectedFestival.location}</button>
+            </p>
+            <div className="festival-image-container">
+              <img
+                src={selectedFestival.image}
+                alt={selectedFestival.name}
+                className="festival-image"
+                width={"90%"}
+              />
+            </div>
+        </div>
+        <div className="column">
+
+        </div>
+      </div>
+          
+        <Table className='w-full text-2xl light' isStriped aria-label="Summary of all events" color='default'>
           <TableHeader>
-            <TableColumn><p className='tb-header'>Time</p></TableColumn>
-            <TableColumn><p className='tb-header'>Event</p></TableColumn>
+            <TableColumn><p className='tb-header'>Date</p></TableColumn>
+            <TableColumn><p className='tb-header'>Time Range</p></TableColumn>
+            <TableColumn><p className='tb-header'>Events</p></TableColumn>
+            <TableColumn><p className='tb-header'>Tickets</p></TableColumn>
           </TableHeader>
           <TableBody>
-            {(selectedDay?.events ?? []).map((event, index) => (
-              <TableRow key={index} className="table-row">
-                <TableCell><p className='tb-body'>{event.time}</p></TableCell>
-                <TableCell><p className='tb-body'>{event.description}</p></TableCell>
-              </TableRow>
-            ))}
+            {selectedFestival.days.map((day, dayIndex) => {
+              const timeRange = `${day.events[0].time} - ${day.events[day.events.length - 1].time}`;
+              const descriptions = day.events.map(event => event.description).join(', ');
+              return (
+          <TableRow key={dayIndex} className="table-row">
+            <TableCell><p className='tb-body'>{new Date(day.date).toDateString()}</p></TableCell>
+            <TableCell><p className='tb-body'>{timeRange}</p></TableCell>
+            <TableCell><p className='tb-body'>{descriptions}</p></TableCell>
+            <TableCell>
+              {day.ticketTiers?.map((tier, tierIndex) => (
+                <div key={tierIndex}>
+            <a href={tier.url} target="_blank" rel="noopener noreferrer" className="tb-body underline">
+              {tier.tier}: {tier.price}
+            </a>
+                </div>
+              ))}
+            </TableCell>
+          </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </div>
