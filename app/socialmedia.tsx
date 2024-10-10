@@ -49,8 +49,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ selectedFestival, handleFesti
   useEffect(() => {
     if (window.FB) {
       window.FB.XFBML.parse();
-    }
-    if (window.twttr) {
+    } else if (window.twttr) {
       window.twttr.widgets.load();
     }
   }, [selectedFestival]);
@@ -89,7 +88,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ selectedFestival, handleFesti
           <div className="social-media-feed">
             <a
               className="twitter-timeline"
-              data-width="400"
+              data-width="600"
               data-height="400"
               href={`https://twitter.com/${selectedFestival.x}?ref_src=twsrc%5Etfw`}
             >

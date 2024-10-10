@@ -154,7 +154,7 @@ export interface TicketTier {
       location: "725 9TH AVE SW, CALGARY,AB T2P 1K8",
       image: "/images/festival2.jpg",
       fb: '',
-      x: '',
+      x: 'BADLANDSfest',
       days: [
         {
           date: "2023-05-04",
