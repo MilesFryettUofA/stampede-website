@@ -30,120 +30,107 @@ export interface TicketTier {
     {
       name: "Cowboys Music Festival",
       location: "519 12th Ave SE, Calgary, AB T2G 0S2",
-      image: "https://cdn.prod.website-files.com/655565965a7623a0e933deb0/655565965a7623a0e933e028_653a4db21d377f67d4f35a5a_Cowboys%252BMusic%252BFestival%252B-%252BPast%252BLineups1.png",
+      image: "https://www.shopcowboysstore.com/cdn/shop/files/COWBOYS_MUSIC_FESTIVAL-01_CALGARY-B-01_300x300.png?v=1613574691",
       fb: 'https://www.facebook.com/CowboysMusicFestival/?locale=br_FR&_rdr',
       x: 'CowboysFestival',
 
       days: [
         {
-          date: "2024-05-04",
+          date: "2025-07-04",
           events: [
-            { time: "5:00 PM", description: "Kip Moore", duration: 1.5 },
-            { time: "6:30 PM", description: "Brett Kissel", duration: 1.5 },
-            { time: "8:00 PM", description: "Cooper Allen", duration: 1.5 },
+            { time: "05:00 PM", description: "TBA", duration: 9},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$70", url: "https://example.com/tickets/general" },
-            { tier: "VIP", price: "$200", url: "https://example.com/tickets/vip" },
+            { tier: "General", price: "TBA", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
         {
-          date: "2023-05-05",
+          date: "2025-07-05",
           events: [
-            { time: "3:00 PM", description: "Tate Mcrae", duration: 1.5 },
-            { time: "6:30 PM", description: "Friday night show", duration: 1.5 },
+            { time: "05:00 PM", description: "TBA", duration: 9},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$50", url: "https://example.com/tickets/general" },
-            { tier: "VIP", price: "$100", url: "https://example.com/tickets/vip" },
+            { tier: "General", price: "TBA", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
         {
-          date: "2023-05-06",
+          date: "2025-07-06",
           events: [
-            { time: "8:00 PM", description: "Tucker Wetmore", duration: 1.5 },
-            { time: "9:30 PM", description: "Riley Green", duration: 1.5 },
+            { time: "05:00 PM", description: "Thomas Rhett", duration: 9 },
           ],
           ticketTiers: [
-            { tier: "General", price: "$50", url: "https://example.com/tickets/general" },
-            { tier: "VIP", price: "$100", url: "https://example.com/tickets/vip" },
+            { tier: "General", price: "TBA", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
         {
-          date: "2023-05-07",
+          date: "2025-07-07",
           events: [
-            { time: "10:00 AM", description: "Event 7", duration: 1.5 },
-            { time: "12:00 PM", description: "Event 8", duration: 1.5 },
+            { time: "05:00 PM", description: "KYGO", duration: 9 },
           ],
           ticketTiers: [
-            { tier: "General", price: "$50", url: "https://example.com/tickets/general" },
-            { tier: "VIP", price: "$100", url: "https://example.com/tickets/vip" },
+            { tier: "General", price: "TBA", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
         {
-          date: "2023-05-08",
+          date: "2025-07-08",
           events: [
-            { time: "10:00 AM", description: "Event 9", duration: 1.5 },
-            { time: "12:00 PM", description: "Event 10", duration: 1.5 },
+            { time: "05:00 PM", description: "TBA", duration: 9},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$50", url: "https://example.com/tickets/general" },
-            { tier: "VIP", price: "$100", url: "https://example.com/tickets/vip" },
+            { tier: "General", price: "TBA", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
         {
-          date: "2023-05-09",
+          date: "2025-07-09",
           events: [
-            { time: "10:00 AM", description: "Event 11", duration: 1.5 },
-            { time: "12:00 PM", description: "Event 12", duration: 1.5 },
+            { time: "05:00 PM", description: "TBA", duration: 9},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$50", url: "https://example.com/tickets/general" },
-            { tier: "VIP", price: "$100", url: "https://example.com/tickets/vip" },
+            { tier: "General", price: "TBA", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
         {
-          date: "2023-05-10",
+          date: "2025-07-10",
           events: [
-            { time: "10:00 AM", description: "Event 13", duration: 1.5 },
-            { time: "12:00 PM", description: "Event 14", duration: 1.5 },
+            { time: "05:00 PM", description: "TBA", duration: 9},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$50", url: "https://example.com/tickets/general" },
-            { tier: "VIP", price: "$100", url: "https://example.com/tickets/vip" },
+            { tier: "General", price: "TBA", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
         {
-          date: "2023-05-11",
+          date: "2025-07-11",
           events: [
-            { time: "10:00 AM", description: "Event 15", duration: 1.5 },
-            { time: "12:00 PM", description: "Event 16", duration: 1.5 },
+            { time: "05:00 PM", description: "TBA", duration: 9},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$50", url: "https://example.com/tickets/general" },
-            { tier: "VIP", price: "$100", url: "https://example.com/tickets/vip" },
+            { tier: "General", price: "TBA", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
         {
-          date: "2023-05-12",
+          date: "2025-07-12",
           events: [
-            { time: "10:00 AM", description: "Event 17", duration: 1.5 },
-            { time: "12:00 PM", description: "Event 18", duration: 1.5 },
+            { time: "05:00 PM", description: "TBA", duration: 9},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$50", url: "https://example.com/tickets/general" },
-            { tier: "VIP", price: "$100", url: "https://example.com/tickets/vip" },
+            { tier: "General", price: "TBA", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
         {
-          date: "2023-05-13",
+          date: "2025-07-13",
           events: [
-            { time: "10:00 AM", description: "Event 19", duration: 1.5 },
-            { time: "12:00 PM", description: "Event 20", duration: 1.5 },
+            { time: "05:00 PM", description: "TBA", duration: 9},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$50", url: "https://example.com/tickets/general" },
-            { tier: "VIP", price: "$100", url: "https://example.com/tickets/vip" },
+            { tier: "General", price: "TBA", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
       ],
@@ -151,242 +138,143 @@ export interface TicketTier {
     },
     {
       name: "Badlands Music Festival",
-      location: "725 9TH AVE SW, CALGARY,AB T2P 1K8",
-      image: "/images/festival2.jpg",
-      fb: '',
-      x: 'BADLANDSfest',
+      location: "725 9TH AVE SW, CALGARY,AB",
+      image: "https://i.ticketweb.com/i/00/12/54/20/33_Edp.jpg?v=76",
+      fb: 'https://www.facebook.com/badlandsmusicfest/?locale=br_FR&_rdr',
+      x: '',
+
       days: [
         {
-          date: "2023-05-04",
+          date: "2025-07-03",
           events: [
-            { time: "11:00 AM", description: "Event 1", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 2", duration: 1.5 },
+            { time: "06:00 PM", description: "Tiesto", duration: 8},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
+            { tier: "General", price: "TBA", url: "https://ticketweb.ca/search?q=badlands" },
           ],
         },
         {
-          date: "2023-05-05",
+          date: "2025-07-04",
           events: [
-            { time: "11:00 AM", description: "Event 3", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 4", duration: 1.5 },
+            { time: "05:00 PM", description: "TBA", duration: 9},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
+            { tier: "General", price: "TBA", url: "https://ticketweb.ca/search?q=badlands" },
           ],
         },
         {
-          date: "2023-05-06",
+          date: "2025-07-05",
           events: [
-            { time: "11:00 AM", description: "Event 5", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 6", duration: 1.5 },
+            { time: "05:00 PM", description: "TBA", duration: 9},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
+            { tier: "General", price: "TBA", url: "https://ticketweb.ca/search?q=badlands" },
           ],
         },
         {
-          date: "2023-05-07",
+          date: "2025-07-06",
           events: [
-            { time: "11:00 AM", description: "Event 7", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 8", duration: 1.5 },
+            { time: "05:00 PM", description: "Thomas Rhett", duration: 9 },
           ],
           ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
+            { tier: "General", price: "TBA", url: "https://ticketweb.ca/search?q=badlands" },
           ],
         },
         {
-          date: "2023-05-08",
+          date: "2025-07-07",
           events: [
-            { time: "11:00 AM", description: "Event 9", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 10", duration: 1.5 },
+            { time: "05:00 PM", description: "KYGO", duration: 9 },
           ],
           ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
+            { tier: "General", price: "TBA", url: "https://ticketweb.ca/search?q=badlands" },
           ],
         },
         {
-          date: "2023-05-09",
+          date: "2025-07-08",
           events: [
-            { time: "11:00 AM", description: "Event 11", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 12", duration: 1.5 },
+            { time: "05:00 PM", description: "TBA", duration: 9},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
+            { tier: "General", price: "TBA", url: "https://ticketweb.ca/search?q=badlands" },
           ],
         },
         {
-          date: "2023-05-10",
+          date: "2025-07-09",
           events: [
-            { time: "11:00 AM", description: "Event 13", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 14", duration: 1.5 },
+            { time: "05:00 PM", description: "TBA", duration: 9},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
+            { tier: "General", price: "TBA", url: "https://ticketweb.ca/search?q=badlands" },
           ],
         },
         {
-          date: "2023-05-11",
+          date: "2025-07-10",
           events: [
-            { time: "11:00 AM", description: "Event 15", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 16", duration: 1.5 },
+            { time: "05:00 PM", description: "TBA", duration: 9},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
+            { tier: "General", price: "TBA", url: "https://ticketweb.ca/search?q=badlands" },
           ],
         },
         {
-          date: "2023-05-12",
+          date: "2025-07-11",
           events: [
-            { time: "11:00 AM", description: "Event 17", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 18", duration: 1.5 },
+            { time: "05:00 PM", description: "TBA", duration: 9},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
+            { tier: "General", price: "TBA", url: "https://ticketweb.ca/search?q=badlands" },
           ],
         },
         {
-          date: "2023-05-13",
+          date: "2025-07-12",
           events: [
-            { time: "11:00 AM", description: "Event 19", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 20", duration: 1.5 },
+            { time: "05:00 PM", description: "TBA", duration: 9},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
+            { tier: "General", price: "TBA", url: "https://ticketweb.ca/search?q=badlands" },
+          ],
+        },
+        {
+          date: "2025-07-13",
+          events: [
+            { time: "05:00 PM", description: "TBA", duration: 9},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "TBA", url: "https://ticketweb.ca/search?q=badlands" },
           ],
         },
       ],
       
     },
     {
-      name: "National Saloon",
-      location: "725 9TH AVE SW, CALGARY,AB T2P 1K8",
-      image: "/images/festival2.jpg",
-      fb: '',
-      x: '',
+      name: "Stampede Concert Series",
+      location: "555 Saddledome Rise SE, Calgary, AB T2G 2W1",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Calgary_Stampede_Logo.svg/320px-Calgary_Stampede_Logo.svg.png",
+      fb: 'https://www.facebook.com/scotiabanksaddledome/?locale=br_FR&_rdr',
+      x: 'cgysaddledome',
+
       days: [
         {
-          date: "2023-05-04",
+          date: "2025-07-05",
           events: [
-            { time: "11:00 AM", description: "Event 1", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 2", duration: 1.5 },
+            { time: "07:30 PM", description: "Shania Twain", duration: 4},
+
           ],
           ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
-          ],
-        },
-        {
-          date: "2023-05-05",
-          events: [
-            { time: "11:00 AM", description: "Event 3", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 4", duration: 1.5 },
-          ],
-          ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
-          ],
-        },
-        {
-          date: "2023-05-06",
-          events: [
-            { time: "11:00 AM", description: "Event 5", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 6", duration: 1.5 },
-          ],
-          ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
-          ],
-        },
-        {
-          date: "2023-05-07",
-          events: [
-            { time: "11:00 AM", description: "Event 7", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 8", duration: 1.5 },
-          ],
-          ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
-          ],
-        },
-        {
-          date: "2023-05-08",
-          events: [
-            { time: "11:00 AM", description: "Event 9", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 10", duration: 1.5 },
-          ],
-          ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
-          ],
-        },
-        {
-          date: "2023-05-09",
-          events: [
-            { time: "11:00 AM", description: "Event 11", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 12", duration: 1.5 },
-          ],
-          ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
-          ],
-        },
-        {
-          date: "2023-05-10",
-          events: [
-            { time: "11:00 AM", description: "Event 13", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 14", duration: 1.5 },
-          ],
-          ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
-          ],
-        },
-        {
-          date: "2023-05-11",
-          events: [
-            { time: "11:00 AM", description: "Event 15", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 16", duration: 1.5 },
-          ],
-          ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
-          ],
-        },
-        {
-          date: "2023-05-12",
-          events: [
-            { time: "11:00 AM", description: "Event 17", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 18", duration: 1.5 },
-          ],
-          ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
-          ],
-        },
-        {
-          date: "2023-05-13",
-          events: [
-            { time: "11:00 AM", description: "Event 19", duration: 1.5 },
-            { time: "01:00 PM", description: "Event 20", duration: 1.5 },
-          ],
-          ticketTiers: [
-            { tier: "General", price: "$60", url: "https://www.badlandsmusicfest.com/" },
-            { tier: "VIP", price: "$120", url: "https://www.badlandsmusicfest.com/" },
+            { tier: "TicketMaster", price: "194+", url: "https://ticketmaster.ca/event/11006150E8574A77?referrer=https%3A%2F%2Fwww.calgarystampede.com%2F" },
           ],
         },
       ],
+      
     },
     // Add more festivals as needed
   ];

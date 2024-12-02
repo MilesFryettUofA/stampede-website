@@ -36,6 +36,8 @@ import MyCalendar from './Calendar';
 import moment from 'moment';
 import 'moment-timezone' // or 'moment-timezone/builds/moment-timezone-with-data[-datarange].js'. See their docs
 import SocialMedia from './socialmedia'; // Import the SocialMedia component
+import AdComponent from './AdComponent'; // Import the AdComponent
+
 
 
 // Set the IANA time zone you want to use
@@ -45,7 +47,7 @@ moment.tz.setDefault('america/denver')
 
 const FestivalsPage: React.FC = () => {
   const [selectedFestival, setSelectedFestival] = useState<Festival>(festivalsData[0]);
-  const [selectedDate, setSelectedDate] = useState<string>('2023-07-01');
+  const [selectedDate, setSelectedDate] = useState(selectedFestival.days[0].date);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [modalLocation, setModalLocation] = useState<string>('');
 
@@ -77,7 +79,12 @@ const FestivalsPage: React.FC = () => {
     });
 
     return Object.entries(aggregated).map(([festivalName, data]) => {
-      const timeRange = `${data.times[0]} - ${data.times[data.times.length - 1]}`;
+      let timeRange;
+      if (data.times.length === 1) {
+        timeRange = `${data.times[0]} - 02:00 AM`;
+      } else {
+        timeRange = `${data.times[0]} - ${data.times[data.times.length - 1]}`;
+      }
       return {
         festivalName,
         timeRange,
@@ -106,19 +113,45 @@ const FestivalsPage: React.FC = () => {
 
 
   const calendarEvents = festivalsData.flatMap(festival =>
-  festival.days.flatMap(day =>
-    day.events.map(event => {
-      const startTime = moment.tz(`${day.date} ${event.time}`, 'YYYY-MM-DD h:mm A', 'America/Denver').toDate();
-      const endTime = moment(startTime).add(event.duration, 'hours').toDate();
-
-      return {
-        title: `${festival.name} - ${event.description}`,
-        start: startTime,
-        end: endTime,
-      };
-    })
-  )
-);
+    festival.days.flatMap(day =>
+      day.events.flatMap(event => {
+        const startTime = moment.tz(`${day.date} ${event.time}`, 'YYYY-MM-DD h:mm A', 'America/Denver').toDate();
+        const endTime = moment(startTime).add(event.duration, 'hours').toDate();
+  
+        const events = [];
+  
+        // Check if the event goes past midnight
+        if (moment(startTime).isSame(endTime, 'day')) {
+          // Event does not go past midnight
+          events.push({
+            title: `${festival.name} - ${event.description}`,
+            start: startTime,
+            end: endTime,
+          });
+        } else {
+          // Event goes past midnight
+          const midnight = moment(startTime).endOf('day').toDate();
+          const nextDayStart = moment(midnight).add(1, 'minute').toDate();
+  
+          // Event part 1: from start time to midnight
+          events.push({
+            title: `${festival.name} - ${event.description}`,
+            start: startTime,
+            end: midnight,
+          });
+  
+          // Event part 2: from midnight to end time
+          events.push({
+            title: `${festival.name} - ${event.description}`,
+            start: nextDayStart,
+            end: endTime,
+          });
+        }
+  
+        return events;
+      })
+    )
+  );
 
 
   return (
@@ -148,13 +181,16 @@ const FestivalsPage: React.FC = () => {
         color='primary'
         radius='sm'
       >
-        {selectedFestival.days.map((day) => (
-          <Tab
-            className='light'
-            key={day.date}
-            title={new Date(day.date).toDateString()} 
-          />
-        ))}
+        {selectedFestival.days.map((day: Day) => {
+          const parsedDate = moment.tz(day.date, 'YYYY-MM-DD', 'America/Denver').format('dddd, MMMM Do');
+          return (
+            <Tab
+              className='light'
+              key={day.date}
+              title={parsedDate} 
+            />
+          );
+        })}
       </Tabs>
       </div>
         <Table className='w-full text-2xl light' isStriped aria-label="Summary of All Festivals" color='default'>
@@ -247,6 +283,7 @@ const FestivalsPage: React.FC = () => {
             </div>
         </div>
         <div className="column">
+          <AdComponent />
 
         </div>
       </div>
