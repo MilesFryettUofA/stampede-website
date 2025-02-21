@@ -3,7 +3,7 @@ import { Calendar, momentLocalizer,} from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'moment-timezone' // or 'moment-timezone/builds/moment-timezone-with-data[-datarange].js'. See their docs
-import './Styles/Calendar.css'; // Import custom CSS
+import './styles/Calendar.css'; // Import custom CSS
 
 
 // Set the IANA time zone you want to use
