@@ -28,6 +28,8 @@ import moment from 'moment';
 import 'moment-timezone' // or 'moment-timezone/builds/moment-timezone-with-data[-datarange].js'. See their docs
 import SocialMedia from './socialmedia'; // Import the SocialMedia component
 import AdComponent from './AdComponent'; // Import the AdComponent
+import Image from 'next/image';
+
 
 
 
@@ -149,7 +151,7 @@ const FestivalsPage: React.FC = () => {
     
     <div className="page-container" color="primary">
       <span style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}> 
-        <img
+        <Image
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Calgary_Stampede_Logo.svg/2560px-Calgary_Stampede_Logo.svg.png?20110803212241"
           alt="Calgary Stampede Logo"
           width={300}
