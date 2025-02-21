@@ -17,7 +17,7 @@ interface SocialMediaProps {
   handleFestivalChange: (festival: Festival) => void;
 }
 
-const SocialMedia: React.FC<SocialMediaProps> = ({ selectedFestival, handleFestivalChange}) => {
+const SocialMedia: React.FC<SocialMediaProps> = ({ selectedFestival}) => {
   const [selectedMedia, setSelectedMedia] = useState('Facebook');
 
   useEffect(() => {
@@ -38,9 +38,12 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ selectedFestival, handleFesti
 
   useEffect(() => {
     if (selectedMedia === 'Facebook' && window.FB) {
+      console.log(window.FB)
       window.FB.XFBML.parse();
     } else if (selectedMedia === 'Twitter' && window.twttr) {
       window.twttr.widgets.load();
+      console.log(window.twttr)
+
     } else if (selectedMedia === 'Instagram' && window.instgrm) {
       window.instgrm.Embeds.process();
     }
