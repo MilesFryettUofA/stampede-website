@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Tabs, Tab } from '@nextui-org/react';
-import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
-import { festivalsData, Festival, Day } from './festivalsData';
+import { FaFacebook, FaTwitter } from 'react-icons/fa';
+import {  Festival } from './festivalsData';
 
 
 declare global {
