@@ -105,6 +105,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ selectedFestival}) => {
       </Tabs>
     </div>
   );
+  
 };
 
 export default SocialMedia;

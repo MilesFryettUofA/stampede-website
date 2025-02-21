@@ -267,11 +267,12 @@ const FestivalsPage: React.FC = () => {
               Location: <button className="festival-location-button" onClick={() => openModal(selectedFestival.location)}>{selectedFestival.location}</button>
             </p>
             <div className="festival-image-container">
-              <img
+              <Image
                 src={selectedFestival.image}
                 alt={selectedFestival.name}
                 className="festival-image"
-                width={"90%"}
+                width={300}
+                height={200}
               />
             </div>
         </div>
