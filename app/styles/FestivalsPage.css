@@ -32,7 +32,7 @@
 
 
 .table-container {
-  padding: 20px;
+  padding: 5 0 5 0;
   max-width: 100%;
   width: 100%;
   display: flex;
@@ -73,7 +73,7 @@
 
  .tb-header {
   
-  font-size:2em; 
+  font-size:3vh; 
   font-weight: 500;
   line-height: 1.25em;
   color: var(--text-color-light);
@@ -84,7 +84,7 @@
 }
 
 .tb-body {
-  font-size:1.5em; 
+  font-size:2vh; 
   font-weight: 300;
   line-height:1em;
   color: var(--text-color);
@@ -164,36 +164,36 @@
 
 @media (max-width: 1200px) {
   .tb-body  {
-    font-size: 125%;
+    font-size: 1.5vh;
   }
   .tb-header  {
-    font-size: 125%;
+    font-size: 2vh;
   }
 }
 
 @media (max-width: 992px) {
   .tb-body  {
-    font-size: 100%;
+    font-size: 1vh;
   }
   .tb-header  {
-    font-size: 100%
+    font-size: 1vh;
   }
 }
 
 @media (max-width: 768px) {
   .tb-body  {
-    font-size: 75%;
+    font-size: 0.75vh;
   }
   .tb-header  {
-    font-size: 75%;
+    font-size: 0.75vh;
   }
 }
 
 @media (max-width: 576px) {
   .tb-body  {
-    font-size: 50%;
+    font-size: 0.5vh;
   }
   .tb-header  {
-    font-size: 50%;
+    font-size: 1vh;
   }
 }
