@@ -186,7 +186,7 @@ const FestivalsPage: React.FC = () => {
         })}
       </Tabs>
       </div>
-        <Table className='w-full text-2xl light' isStriped aria-label="Summary of All Festivals" color='default'>
+        <Table className='table-container' isStriped aria-label="Summary of All Festivals" color='default'>
             <TableHeader>
             <TableColumn><p className='tb-header'> Event</p></TableColumn>
             <TableColumn><p className='tb-header'>Time Range</p></TableColumn>
@@ -282,7 +282,7 @@ const FestivalsPage: React.FC = () => {
         </div>
       </div>
           
-        <Table className='w-full text-2xl light' isStriped aria-label="Summary of all events" color='default'>
+        <Table className='w-full text-2xl light table-container' isStriped aria-label="Summary of all events" color='default'>
           <TableHeader>
             <TableColumn><p className='tb-header'>Date</p></TableColumn>
             <TableColumn><p className='tb-header'>Time Range</p></TableColumn>
