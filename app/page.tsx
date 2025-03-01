@@ -22,7 +22,7 @@ import {
   ModalContent,
 
 
-} from "@nextui-org/react";
+} from '@heroui/react';
 import MyCalendar from './Calendar';
 import moment from 'moment';
 import 'moment-timezone' // or 'moment-timezone/builds/moment-timezone-with-data[-datarange].js'. See their docs
@@ -164,13 +164,13 @@ const FestivalsPage: React.FC = () => {
       <div className="summary-container">
         <h2 className="summary-title">All Events During {new Date(selectedDate).toDateString()}</h2>
 
-        <div className='overflow-x-auto tab-sty'>
+        <div className='tab-sty'>
           <Tabs
             aria-label="Festival Dates"
             selectedKey={selectedDate}
-            fullWidth
+            fullWidth = {false}
             onSelectionChange={(key) => handleDateChange(key as string)}
-            className='flex flex-wrap justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 light large'
+            className='scroll-smooth'
             color='primary'
             radius='sm'
           >
@@ -242,7 +242,7 @@ const FestivalsPage: React.FC = () => {
           selectedKey={selectedFestival.name}
           fullWidth
           onSelectionChange={(key) => handleFestivalChange(festivalsData.find(festival => festival.name === key)!)}
-          className='flex flex-wrap justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 light large'
+          className=''
           color='primary'
           radius='sm'
           variant='bordered'

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Tabs, Tab } from '@nextui-org/react';
+import { Tabs, Tab } from '@heroui/react';;
 import { FaFacebook, FaTwitter } from 'react-icons/fa';
 import {  Festival } from './festivalsData';
 
