@@ -33,6 +33,7 @@ import Image from 'next/image';
 
 
 
+
 // Set the IANA time zone you want to use
 moment.tz.setDefault('america/denver')
 
@@ -149,6 +150,7 @@ const FestivalsPage: React.FC = () => {
 
   return (
     
+    
     <div className="page-container" color="primary">
       <span style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}> 
         <Image
@@ -164,13 +166,19 @@ const FestivalsPage: React.FC = () => {
       <div className="summary-container">
         <h2 className="summary-title">All Events During {new Date(selectedDate).toDateString()}</h2>
 
-        <div className='tab-sty'>
+        <div className=''>
           <Tabs
             aria-label="Festival Dates"
             selectedKey={selectedDate}
-            fullWidth = {false}
+            fullWidth = {true}
             onSelectionChange={(key) => handleDateChange(key as string)}
-            className='scroll-smooth'
+            classNames= {{
+              tabList: "gap-6 w-full relative rounded-none pt-1 pr-2 pl-2 pb-1",
+              cursor: "w-full text-xl",
+              tab: "max-w-fit px-0 h-12",
+              tabContent: "group-data-[selected=true]:text-xl text-xs",
+
+            }}
             color='primary'
             radius='sm'
           >
@@ -185,7 +193,7 @@ const FestivalsPage: React.FC = () => {
               );
             })}
           </Tabs>
-      </div>
+        </div>
         <Table className='table-container' isStriped aria-label="Summary of All Festivals" color='default'>
             <TableHeader>
             <TableColumn><p className='tb-header'> Event</p></TableColumn>
