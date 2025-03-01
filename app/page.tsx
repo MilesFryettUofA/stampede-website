@@ -175,7 +175,7 @@ const FestivalsPage: React.FC = () => {
             classNames= {{
               tabList: "gap-6 w-full relative rounded-none pt-1 pr-2 pl-2 pb-1",
               cursor: "w-full text-xl",
-              tab: "max-w-fit px-0 h-12",
+              tab: "max-w-fit px-0 h-16 p-1",
               tabContent: "group-data-[selected=true]:text-xl text-base",
 
             }}
