@@ -176,7 +176,7 @@ const FestivalsPage: React.FC = () => {
               tabList: "gap-6 w-full relative rounded-none pt-1 pr-2 pl-2 pb-1",
               cursor: "w-full text-xl",
               tab: "max-w-fit px-0 h-12",
-              tabContent: "group-data-[selected=true]:text-xl text-xs",
+              tabContent: "group-data-[selected=true]:text-xl text-base",
 
             }}
             color='primary'
@@ -184,11 +184,13 @@ const FestivalsPage: React.FC = () => {
           >
             {selectedFestival.days.map((day: Day) => {
               const parsedDate = moment.tz(day.date, 'YYYY-MM-DD', 'America/Denver').format('dddd, MMMM Do');
+              const justNum = moment.tz(day.date, 'YYYY-MM-DD', 'America/Denver').format('D');
+              const isSelected = selectedDate === day.date;
               return (
                 <Tab
                   className='light'
                   key={day.date}
-                  title={parsedDate} 
+                  title={isSelected ? parsedDate : `${justNum}th`} // Change text based on selection
                 />
               );
             })}
