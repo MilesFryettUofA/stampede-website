@@ -165,26 +165,26 @@ const FestivalsPage: React.FC = () => {
         <h2 className="summary-title">All Events During {new Date(selectedDate).toDateString()}</h2>
 
         <div className='overflow-x-auto tab-sty'>
-      <Tabs
-        aria-label="Festival Dates"
-        selectedKey={selectedDate}
-        fullWidth
-        onSelectionChange={(key) => handleDateChange(key as string)}
-        className='flex flex-wrap justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 light large'
-        color='primary'
-        radius='sm'
-      >
-        {selectedFestival.days.map((day: Day) => {
-          const parsedDate = moment.tz(day.date, 'YYYY-MM-DD', 'America/Denver').format('dddd, MMMM Do');
-          return (
-            <Tab
-              className='light'
-              key={day.date}
-              title={parsedDate} 
-            />
-          );
-        })}
-      </Tabs>
+          <Tabs
+            aria-label="Festival Dates"
+            selectedKey={selectedDate}
+            fullWidth
+            onSelectionChange={(key) => handleDateChange(key as string)}
+            className='flex flex-wrap justify-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 light large'
+            color='primary'
+            radius='sm'
+          >
+            {selectedFestival.days.map((day: Day) => {
+              const parsedDate = moment.tz(day.date, 'YYYY-MM-DD', 'America/Denver').format('dddd, MMMM Do');
+              return (
+                <Tab
+                  className='light'
+                  key={day.date}
+                  title={parsedDate} 
+                />
+              );
+            })}
+          </Tabs>
       </div>
         <Table className='table-container' isStriped aria-label="Summary of All Festivals" color='default'>
             <TableHeader>
