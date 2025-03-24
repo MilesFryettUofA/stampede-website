@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { festivalsData, Festival, Day } from './festivalsData';
+import { festivalsData, Festival, Day , TicketTier} from './festivalsData';
 import './styles/FestivalsPage.css';
 import './styles/theme.css';
 import {
@@ -24,10 +24,8 @@ import {
 
 } from '@heroui/react';
 import MyCalendar from './Calendar';
-import moment from 'moment';
+import moment, { duration } from 'moment';
 import 'moment-timezone' // or 'moment-timezone/builds/moment-timezone-with-data[-datarange].js'. See their docs
-import SocialMedia from './socialmedia'; // Import the SocialMedia component
-import AdComponent from './AdComponent'; // Import the AdComponent
 import Image from 'next/image';
 
 
@@ -57,33 +55,31 @@ const FestivalsPage: React.FC = () => {
     return festivalsData.flatMap(festival =>
       festival.days
         .filter(day => day.date === date)
-        .flatMap(day => day.events.map(event => ({ ...event, festivalName: festival.name, location: festival.location })))
+        .flatMap(day => day.events.map(event => ({ ...event, festivalName: festival.name, location: festival.location, duration: event.duration, tickettier: day.ticketTiers[0]})))
     );
   };
 
-  const aggregateEventsByFestival = (events: { time: string; description: string; location: string; festivalName: string }[]) => {
-    const aggregated: { [key: string]: { times: string[], descriptions: string[], location: string } } = {};
+const aggregateEventsByFestival = (events: { time: string; duration: number; description: string; tickettier: TicketTier; location: string; festivalName: string }[]) => {
+    const aggregated: { [key: string]: { time: string, duration: number, tickettier: TicketTier, descriptions: string[], location: string } } = {};
 
     events.forEach(event => {
       if (!aggregated[event.festivalName]) {
-        aggregated[event.festivalName] = { times: [], descriptions: [], location: event.location };
+        aggregated[event.festivalName] = { time: event.time, duration: event.duration, descriptions: [], location: event.location, tickettier: event.tickettier};
       }
-      aggregated[event.festivalName].times.push(event.time);
       aggregated[event.festivalName].descriptions.push(event.description);
+
+      
     });
 
     return Object.entries(aggregated).map(([festivalName, data]) => {
-      let timeRange;
-      if (data.times.length === 1) {
-        timeRange = `${data.times[0]} - 02:00 AM`;
-      } else {
-        timeRange = `${data.times[0]} - ${data.times[data.times.length - 1]}`;
-      }
+      const endTime = moment(data.time, 'h:mm A').add(data.duration, 'hours').format('h:mm A');
+      const timeRange = `${data.time} - ${endTime}`;
       return {
         festivalName,
         timeRange,
         descriptions: data.descriptions.join(', '),
         location: data.location,
+        tickettier: data.tickettier,
       };
     });
   };
@@ -176,7 +172,7 @@ const FestivalsPage: React.FC = () => {
               tabList: "gap-6 w-full relative rounded-none pt-1 pr-2 pl-2 pb-1",
               cursor: "w-full text-xl",
               tab: "max-w-fit px-0 h-16 p-1",
-              tabContent: "group-data-[selected=true]:text-xl text-base",
+              tabContent: "group-data-[selected=true]:text-xl text-base font-medium",
 
             }}
             color='primary'
@@ -196,7 +192,10 @@ const FestivalsPage: React.FC = () => {
             })}
           </Tabs>
         </div>
-        <Table className='table-container' isStriped aria-label="Summary of All Festivals" color='default'>
+        <Table className='table-container' isStriped aria-label="Summary of All Festivals" color='default'
+        classNames= {{
+        }}
+        >
             <TableHeader>
             <TableColumn><p className='tb-header'> Event</p></TableColumn>
             <TableColumn><p className='tb-header'>Time Range</p></TableColumn>
@@ -226,13 +225,13 @@ const FestivalsPage: React.FC = () => {
                   </span>
                 </TableCell>
                 <TableCell>
-                {selectedDay?.ticketTiers?.map((tier: { tier: string; price: string; url: string }, tierIndex: number) => (
-                  <div key={tierIndex}>
-                  <a href={tier.url} target="_blank" rel="noopener noreferrer" className="tb-body underline">
-                  {tier.tier}: {tier.price}
-                  </a>
+                {event.tickettier && (
+                  <div>
+                    <a href={event.tickettier.url} target="_blank" rel="noopener noreferrer" className="tb-body underline">
+                      {event.tickettier.tier}: {event.tickettier.price}
+                    </a>
                   </div>
-                ))}
+                )}
                 </TableCell>
               </TableRow>
             ))}
@@ -263,34 +262,7 @@ const FestivalsPage: React.FC = () => {
         </Tabs>
       </div>
       <div className="summary-container">
-      <div className="row">
-        <div className="column">
-          <SocialMedia
-            selectedFestival={selectedFestival}
-            handleFestivalChange={handleFestivalChange}
-          />
-        </div>
-        <div className="column">
-          <h2 className="festival-title">{selectedFestival.name}</h2>
-            <p className="festival-date">{new Date(selectedDate).toDateString()}</p>
-            <p className="festival-location">
-              Location: <button className="festival-location-button" onClick={() => openModal(selectedFestival.location)}>{selectedFestival.location}</button>
-            </p>
-            <div className="festival-image-container">
-              <Image
-                src={selectedFestival.image}
-                alt={selectedFestival.name}
-                className="festival-image"
-                width={300}
-                height={200}
-              />
-            </div>
-        </div>
-        <div className="column">
-          <AdComponent />
 
-        </div>
-      </div>
           
         <Table className='w-full text-2xl light table-container' isStriped aria-label="Summary of all events" color='default'>
           <TableHeader>
@@ -301,7 +273,8 @@ const FestivalsPage: React.FC = () => {
           </TableHeader>
           <TableBody>
             {selectedFestival.days.map((day, dayIndex) => {
-              const timeRange = `${day.events[0].time} - ${day.events[day.events.length - 1].time}`;
+              const endTime = moment(day.events[0].time, 'h:mm A').add(day.events[0].duration, 'hours').format('h:mm A');
+              const timeRange = `${day.events[0].time} - ${endTime}`;
               const descriptions = day.events.map(event => event.description).join(', ');
               return (
           <TableRow key={dayIndex} className="table-row">
