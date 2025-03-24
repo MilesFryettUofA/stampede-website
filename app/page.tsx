@@ -24,7 +24,7 @@ import {
 
 } from '@heroui/react';
 import MyCalendar from './Calendar';
-import moment, { duration } from 'moment';
+import moment from 'moment';
 import 'moment-timezone' // or 'moment-timezone/builds/moment-timezone-with-data[-datarange].js'. See their docs
 import Image from 'next/image';
 
@@ -87,7 +87,7 @@ const aggregateEventsByFestival = (events: { time: string; duration: number; des
   const allEventsForSelectedDay = getAllEventsForDay(selectedDate);
   const aggregatedEvents = aggregateEventsByFestival(allEventsForSelectedDay);
 
-  const selectedDay = selectedFestival.days.find(day => day.date === selectedDate);
+  //const selectedDay = selectedFestival.days.find(day => day.date === selectedDate);
 
   const openModal = (location: string) => {
     setModalLocation(location);
