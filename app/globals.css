@@ -4,7 +4,7 @@
 
 :root {
   --background: #9a2222;
-  --foreground: #171717;
+  --foreground: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,3 +25,4 @@ body {
     text-wrap: balance;
   }
 }
+

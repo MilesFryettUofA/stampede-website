@@ -20,22 +20,14 @@ import {
   ModalBody,
   ModalFooter,
   ModalContent,
-
-
 } from '@heroui/react';
 import MyCalendar from './Calendar';
 import moment from 'moment';
 import 'moment-timezone' // or 'moment-timezone/builds/moment-timezone-with-data[-datarange].js'. See their docs
 import Image from 'next/image';
 
-
-
-
-
 // Set the IANA time zone you want to use
 moment.tz.setDefault('america/denver')
-
-
 
 const FestivalsPage: React.FC = () => {
   const [selectedFestival, setSelectedFestival] = useState<Festival>(festivalsData[0]);
@@ -99,9 +91,6 @@ const aggregateEventsByFestival = (events: { time: string; duration: number; des
     setModalLocation('');
   };
 
-
-
-
   const calendarEvents = festivalsData.flatMap(festival =>
     festival.days.flatMap(day =>
       day.events.flatMap(event => {
@@ -143,11 +132,15 @@ const aggregateEventsByFestival = (events: { time: string; duration: number; des
     )
   );
 
+  const getOrdinalSuffix = (num: number): string => {
+    if (num % 10 === 1 && num % 100 !== 11) return `${num}st`;
+    if (num % 10 === 2 && num % 100 !== 12) return `${num}nd`;
+    if (num % 10 === 3 && num % 100 !== 13) return `${num}rd`;
+    return `${num}th`;
+  };
 
   return (
-    
-    
-    <div className="page-container" color="primary">
+    <div className="page-container " color="primary">
       <span style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}> 
         <Image
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Calgary_Stampede_Logo.svg/2560px-Calgary_Stampede_Logo.svg.png?20110803212241"
@@ -155,12 +148,10 @@ const aggregateEventsByFestival = (events: { time: string; duration: number; des
           width={300}
           height={200}
         />
-        <h1 className="page-title">ONE</h1>
       </span>
 
       
       <div className="summary-container">
-        <h2 className="summary-title">All Events During {new Date(selectedDate).toDateString()}</h2>
 
         <div className=''>
           <Tabs
@@ -170,9 +161,9 @@ const aggregateEventsByFestival = (events: { time: string; duration: number; des
             onSelectionChange={(key) => handleDateChange(key as string)}
             classNames= {{
               tabList: "gap-6 w-full relative rounded-none pt-1 pr-2 pl-2 pb-1",
-              cursor: "w-full text-xl",
-              tab: "max-w-fit px-0 h-16 p-1",
-              tabContent: "group-data-[selected=true]:text-xl text-base font-medium",
+              cursor: "w-full",
+              tab: "max-w-fit px-0 h-8 p-1",
+              tabContent: "group-data-[selected=true]:text-md uppercase text-base font-medium",
 
             }}
             color='primary'
@@ -186,36 +177,29 @@ const aggregateEventsByFestival = (events: { time: string; duration: number; des
                 <Tab
                   className='light'
                   key={day.date}
-                  title={isSelected ? parsedDate : `${justNum}th`} // Change text based on selection
+                  title={isSelected ? parsedDate : getOrdinalSuffix(parseInt(justNum))} // Change text based on selection
                 />
               );
             })}
           </Tabs>
         </div>
-        <Table className='table-container' isStriped aria-label="Summary of All Festivals" color='default'
+        <div className="calendar-container">
+        <Table className='table-container min-w-full divide-y divide-gray-200' isStriped aria-label="Summary of All Festivals" color='default'
         classNames= {{
+          table: "min-w-full divide-y divide-gray-200",
+          th: "p-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+          td: "p-2 whitespace-nowrap"
         }}
         >
             <TableHeader>
-            <TableColumn><p className='tb-header'> Event</p></TableColumn>
+            <TableColumn><p className='tb-header'>Location</p></TableColumn>
             <TableColumn><p className='tb-header'>Time Range</p></TableColumn>
             <TableColumn><p className='tb-header'>Events</p></TableColumn>
-            <TableColumn><p className='tb-header'>Location</p></TableColumn>
-            <TableColumn><p className='tb-header'>Ticket Tiers</p></TableColumn>
+            <TableColumn><p className='tb-header'>Tickets</p></TableColumn>
             </TableHeader>
           <TableBody>
             {aggregatedEvents.map((event, index) => (
               <TableRow key={index}>
-                <TableCell>
-                <span
-                  className="cursor-pointer text-blue-500"
-                  onClick={() => handleFestivalChange(festivalsData.find(festival => festival.name === event.festivalName)!)}
-                >
-                  <p className='tb-body'>{event.festivalName}</p>
-                </span>
-                </TableCell>
-                <TableCell><p className='tb-body'>{event.timeRange}</p></TableCell>
-                <TableCell><p className='tb-body'>{event.descriptions}</p></TableCell>
                 <TableCell>
                   <span
                     className="cursor-pointer text-blue-500"
@@ -224,19 +208,23 @@ const aggregateEventsByFestival = (events: { time: string; duration: number; des
                     <p className='tb-body underline'>{event.festivalName}</p>
                   </span>
                 </TableCell>
+                <TableCell><p className='tb-body'>{event.timeRange}</p></TableCell>
+                <TableCell><p className='tb-body'>{event.descriptions}</p></TableCell>
                 <TableCell>
                 {event.tickettier && (
-                  <div>
-                    <a href={event.tickettier.url} target="_blank" rel="noopener noreferrer" className="tb-body underline">
+                  <div className="flex justify-left items-center">
+                    <a href={event.tickettier.url} target="_blank" rel="noopener noreferrer" className="tb-body underline text-left">
                       {event.tickettier.tier}: {event.tickettier.price}
                     </a>
                   </div>
+
                 )}
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
+        </div>
         <div className="calendar-container">
       <MyCalendar 
         events={calendarEvents} 
@@ -251,10 +239,16 @@ const aggregateEventsByFestival = (events: { time: string; duration: number; des
           selectedKey={selectedFestival.name}
           fullWidth
           onSelectionChange={(key) => handleFestivalChange(festivalsData.find(festival => festival.name === key)!)}
-          className=''
+          classNames= {{
+            tabList: "gap-6 w-full relative rounded-none pt-1 pr-2 pl-2 pb-1",
+            cursor: "w-full text-xl",
+            tab: "max-w-fit px-0 h-8 p-1 ",
+            tabContent: "group-data-[selected=true]:text-md uppercase text-base font-medium",
+
+          }}
           color='primary'
           radius='sm'
-          variant='bordered'
+          variant='solid'
         >
           {festivalsData.map((festival) => (
             <Tab key={festival.name} title={festival.name} />
@@ -264,7 +258,12 @@ const aggregateEventsByFestival = (events: { time: string; duration: number; des
       <div className="summary-container">
 
           
-        <Table className='w-full text-2xl light table-container' isStriped aria-label="Summary of all events" color='default'>
+        <Table className='table-container min-w-full divide-y divide-gray-200' isStriped aria-label="Summary of all events" color='default'
+          classNames= {{
+            table: "min-w-full divide-y divide-gray-200",
+            th: "p-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+            td: "p-2 whitespace-nowrap"
+          }}>
           <TableHeader>
             <TableColumn><p className='tb-header'>Date</p></TableColumn>
             <TableColumn><p className='tb-header'>Time Range</p></TableColumn>
@@ -283,7 +282,7 @@ const aggregateEventsByFestival = (events: { time: string; duration: number; des
             <TableCell><p className='tb-body'>{descriptions}</p></TableCell>
             <TableCell>
               {day.ticketTiers?.map((tier, tierIndex) => (
-                <div key={tierIndex}>
+                <div key={tierIndex} className="flex justify-left items-center">
             <a href={tier.url} target="_blank" rel="noopener noreferrer" className="tb-body underline">
               {tier.tier}: {tier.price}
             </a>
@@ -327,3 +326,6 @@ const aggregateEventsByFestival = (events: { time: string; duration: number; des
 };
 
 export default FestivalsPage;
+
+
+
