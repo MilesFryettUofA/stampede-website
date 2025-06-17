@@ -544,10 +544,19 @@ export interface TicketTier {
 
       days: [
         {
+          date: "2025-07-03",
+          events: [
+            { time: "08:30 PM", description: "Lauren Spencer Smith & Johna Kagen", duration: 3},
+
+          ],
+          ticketTiers: [
+            { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
+          ],
+        },
+        {
           date: "2025-07-04",
           events: [
-            { time: "08:30 PM", description: "TBD", duration: 3},
-
+            { time: "08:30 PM", description: "Kaleo", duration: 3 },
           ],
           ticketTiers: [
             { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
@@ -556,7 +565,7 @@ export interface TicketTier {
         {
           date: "2025-07-05",
           events: [
-            { time: "08:30 PM", description: "TBD", duration: 3 },
+            { time: "08:30 PM", description: "Tommy Richman", duration: 3 },
           ],
           ticketTiers: [
             { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
@@ -565,7 +574,7 @@ export interface TicketTier {
         {
           date: "2025-07-06",
           events: [
-            { time: "08:30 PM", description: "TBD", duration: 3 },
+            { time: "08:30 PM", description: "Arkells", duration: 3 },
           ],
           ticketTiers: [
             { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
@@ -574,7 +583,7 @@ export interface TicketTier {
         {
           date: "2025-07-07",
           events: [
-            { time: "08:30 PM", description: "TBD", duration: 3 },
+            { time: "08:30 PM", description: "Diplo Presents Thomas Wesley", duration: 3 },
           ],
           ticketTiers: [
             { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
@@ -583,7 +592,8 @@ export interface TicketTier {
         {
           date: "2025-07-08",
           events: [
-            { time: "08:30 PM", description: "TBD", duration: 3 },
+            { time: "08:30 PM", description: "Don Toliver & Tinashe", duration: 3 },
+
           ],
           ticketTiers: [
             { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
@@ -592,7 +602,7 @@ export interface TicketTier {
         {
           date: "2025-07-09",
           events: [
-            { time: "08:30 PM", description: "TBD", duration: 3 },
+            { time: "08:30 PM", description: "Khalid & Amine", duration: 3 },
           ],
           ticketTiers: [
             { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
@@ -601,7 +611,7 @@ export interface TicketTier {
         {
           date: "2025-07-10",
           events: [
-            { time: "08:30 PM", description: "TBD", duration: 3 },
+            { time: "08:30 PM", description: "Bleachers", duration: 3 },
           ],
           ticketTiers: [
             { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
@@ -610,7 +620,7 @@ export interface TicketTier {
         {
           date: "2025-07-11",
           events: [
-            { time: "08:30 PM", description: "TBD", duration: 3 },
+            { time: "08:30 PM", description: "Charlotte Cardin & Lake Street Drive", duration: 3 },
           ],
           ticketTiers: [
             { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
@@ -619,7 +629,7 @@ export interface TicketTier {
         {
           date: "2025-07-12",
           events: [
-            { time: "08:30 PM", description: "TBD", duration: 3 },
+            { time: "08:30 PM", description: "Alesso & Duke Dumont", duration: 3 },
           ],
           ticketTiers: [
             { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
@@ -628,7 +638,7 @@ export interface TicketTier {
         {
           date: "2025-07-13",
           events: [
-            { time: "08:30 PM", description: "TBD", duration: 3 },
+            { time: "08:30 PM", description: "Simple Plan", duration: 3 },
           ],
           ticketTiers: [
             { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
