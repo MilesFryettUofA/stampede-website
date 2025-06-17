@@ -212,41 +212,41 @@ export interface TicketTier {
         {
           date: "2025-07-09",
           events: [
-            { time: "06:00 PM", description: "TBA", duration: 8},
+            { time: "06:00 PM", description: "Gryffin & Dabin", duration: 8},
 
           ],
           ticketTiers: [
-            { tier: "General", price: "TBA", url: "https://ticketweb.ca/search?q=badlands" },
+            { tier: "General", price: "$74", url: "https://ticketweb.ca/search?q=badlands" },
           ],
         },
         {
           date: "2025-07-10",
           events: [
-            { time: "06:00 PM", description: "TBA", duration: 8},
+            { time: "06:00 PM", description: "Cloonee + Chris Lorenzo", duration: 8},
 
           ],
           ticketTiers: [
-            { tier: "General", price: "TBA", url: "https://ticketweb.ca/search?q=badlands" },
+            { tier: "General", price: "$37.50", url: "https://ticketweb.ca/search?q=badlands" },
           ],
         },
         {
           date: "2025-07-11",
           events: [
-            { time: "06:00 PM", description: "TBA", duration: 8},
+            { time: "06:00 PM", description: "Boiler Room", duration: 8},
 
           ],
           ticketTiers: [
-            { tier: "General", price: "TBA", url: "https://ticketweb.ca/search?q=badlands" },
+            { tier: "General", price: "$112", url: "https://ticketweb.ca/search?q=badlands" },
           ],
         },
         {
           date: "2025-07-12",
           events: [
-            { time: "06:00 PM", description: "TBA", duration: 8},
+            { time: "06:00 PM", description: "TBD", duration: 8},
 
           ],
           ticketTiers: [
-            { tier: "General", price: "TBA", url: "https://ticketweb.ca/search?q=badlands" },
+            { tier: "General", price: "TBD", url: "https://ticketweb.ca/search?q=badlands" },
           ],
         },
         {
@@ -271,7 +271,7 @@ export interface TicketTier {
         {
           date: "2025-07-05",
           events: [
-            { time: "07:30 PM", description: "Shania Twain", duration: 4},
+            { time: "07:30 PM", description: "Shania Twain & Devon Cole", duration: 4},
 
           ],
           ticketTiers: [
@@ -396,6 +396,16 @@ export interface TicketTier {
           ],
         },
         {
+          date: "2025-07-04",
+          events: [
+            { time: "05:00 PM", description: "50 40", duration: 9},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$35", url: "https://www.showpass.com/5440-1/" },
+          ],
+        },
+        {
           date: "2025-07-06",
           events: [
             { time: "06:00 PM", description: "Violent Femmes", duration: 8},
@@ -413,6 +423,26 @@ export interface TicketTier {
           ],
           ticketTiers: [
             { tier: "General", price: "$35-$40", url: "https://www.showpass.com/dallas-smith/" },
+          ],
+        },
+        {
+          date: "2025-07-08",
+          events: [
+            { time: "05:00 PM", description: "The Watchmen", duration: 9},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$35-$40", url: "https://www.showpass.com/watchmen-2/" },
+          ],
+        },
+        {
+          date: "2025-07-09",
+          events: [
+            { time: "06:00 PM", description: "Sloan", duration: 8},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$35-$40", url: "https://www.showpass.com/sloan-3/" },
           ],
         },
         {
@@ -435,6 +465,26 @@ export interface TicketTier {
 
       days: [
         {
+          date: "2025-07-04",
+          events: [
+            { time: "04:00 PM", description: "Chad Brownlee", duration: 10},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$25-$85", url: "https://www.showpass.com/chad-brownlee-5/" },
+          ],
+        },
+        {
+          date: "2025-07-05",
+          events: [
+            { time: "06:00 PM", description: "Cole Bradley", duration: 8},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$25-$85", url: "https://www.showpass.com/cole-bradley-4/" },
+          ],
+        },
+        {
           date: "2025-07-06",
           events: [
             { time: "06:00 PM", description: "Down With Webster", duration: 8},
@@ -442,6 +492,46 @@ export interface TicketTier {
           ],
           ticketTiers: [
             { tier: "General", price: "$25-$85", url: "https://www.ntnlsaloon.ca/concerts" },
+          ],
+        },
+        {
+          date: "2025-07-07",
+          events: [
+            { time: "06:00 PM", description: "BBNO$", duration: 8},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$35-$115", url: "https://www.showpass.com/bbno-2/" },
+          ],
+        },
+        {
+          date: "2025-07-08",
+          events: [
+            { time: "07:00 PM", description: "Saint Motel", duration: 7},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$30-$80", url: "https://www.showpass.com/saint-motel-2/" },
+          ],
+        },
+        {
+          date: "2025-07-10",
+          events: [
+            { time: "05:00 PM", description: "Marianas Trench", duration: 9},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$35-$100", url: "https://www.showpass.com/marianas-trench-3/" },
+          ],
+        },
+        {
+          date: "2025-07-12",
+          events: [
+            { time: "09:30 PM", description: "Disco Ranch", duration: 4.5},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$25", url: "https://www.showpass.com/disco-ranch-3/" },
           ],
         },
       ],
