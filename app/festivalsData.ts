@@ -757,5 +757,190 @@ export interface TicketTier {
       ],
       
     },
+    {
+      name: "The Roundup",
+      location: "Prince's Island Park Eau Claire, Calgary, AB",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Calgary_Stampede_Logo.svg/320px-Calgary_Stampede_Logo.svg.png",
+
+      days: [
+        {
+          date: "2025-07-09",
+          events: [
+            { time: "03:00 PM", description: "The Roundup MusicFest", duration: 7},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$125", url: "https://www.ticketmaster.ca/event/11006298B29A383A" },
+          ],
+        },
+        {
+          date: "2025-07-11",
+          events: [
+            { time: "03:00 PM", description: "Oxford Stomp", duration: 7},
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$125", url: "https://www.ticketmaster.ca/oxford-stomp-2025-calgary-alberta-07-11-2025/event/1100629CBE932DA0" },
+          ],
+        },
+      ],
+      
+    },
+    {
+      name: "Buckaroos",
+      location: "117 8 AVE SW, Calgary, AB",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Calgary_Stampede_Logo.svg/320px-Calgary_Stampede_Logo.svg.png",
+
+      days: [
+        {
+          date: "2025-07-04",
+          events: [
+            { time: "09:00 AM", description: "Parade Day Party", duration: 6},
+            { time: "04:30 PM", description: "Bucking Horse Bash Charity Event", duration: 7},
+
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$50", url: "https://www.yahoobuckaroos.com/tickets" },
+          ],
+        },
+        {
+          date: "2025-07-05",
+          events: [
+            { time: "09:00 AM", description: "North Country Collective Showcase", duration: 6},
+
+            { time: "06:30 PM", description: "Saturday Evning Cabaret", duration: 7.5},
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$32/Free?", url: "https://www.yahoobuckaroos.com/tickets" },
+          ],
+        },
+        {
+          date: "2025-07-06",
+          events: [
+            { time: "09:00 AM", description: "Pancake Breakfast", duration: 3.5},
+
+            { time: "01:00 PM", description: "Littlest Honky Tonk Wrap Party", duration: 4},
+          ],
+          ticketTiers: [
+            { tier: "General", price: "Free?", url: "https://www.yahoobuckaroos.com/tickets" },
+          ],
+        },
+      ],
+      
+    },
+    {
+      name: "Ranchmans",
+      location: "117 8 AVE SW, Calgary, AB",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Calgary_Stampede_Logo.svg/320px-Calgary_Stampede_Logo.svg.png",
+
+      days: [
+        {
+          date: "2025-07-03",
+          events: [
+            { time: "07:00 PM", description: "Free Line Dancing Lessons", duration: 3},
+            { time: "09:00 PM", description: "Girl Crush", duration: 3},
+            { time: "06:00 PM", description: "Patio Party", duration: 4},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$20", url: "https://www.showpass.com/o/ranchmans-calgary/" },
+          ],
+        },
+        {
+          date: "2025-07-04",
+          events: [
+            { time: "04:00 PM", description: "Jordan Shingoose", duration: 3},
+            { time: "09:00 PM", description: "Girl Crush", duration: 3},
+            { time: "01:00 PM", description: "Gabriel Moris", duration: 4},
+            { time: "06:00 PM", description: "Brent Mcarthy", duration: 4},
+            { time: "10:00 PM", description: "Josh Dillon", duration: 2.5},
+
+
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$20", url: "https://www.showpass.com/o/ranchmans-calgary/" },
+          ],
+        },        {
+          date: "2025-07-03",
+          events: [
+            { time: "07:00 PM", description: "Free Line Dancing Lessons", duration: 3},
+            { time: "09:00 PM", description: "Girl Crush", duration: 3},
+            { time: "06:00 PM", description: "Patio Party", duration: 4},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$20", url: "https://www.showpass.com/o/ranchmans-calgary/" },
+          ],
+        },        {
+          date: "2025-07-03",
+          events: [
+            { time: "07:00 PM", description: "Free Line Dancing Lessons", duration: 3},
+            { time: "09:00 PM", description: "Girl Crush", duration: 3},
+            { time: "06:00 PM", description: "Patio Party", duration: 4},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$20", url: "https://www.showpass.com/o/ranchmans-calgary/" },
+          ],
+        },        {
+          date: "2025-07-03",
+          events: [
+            { time: "07:00 PM", description: "Free Line Dancing Lessons", duration: 3},
+            { time: "09:00 PM", description: "Girl Crush", duration: 3},
+            { time: "06:00 PM", description: "Patio Party", duration: 4},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$20", url: "https://www.showpass.com/o/ranchmans-calgary/" },
+          ],
+        },        {
+          date: "2025-07-03",
+          events: [
+            { time: "07:00 PM", description: "Free Line Dancing Lessons", duration: 3},
+            { time: "09:00 PM", description: "Girl Crush", duration: 3},
+            { time: "06:00 PM", description: "Patio Party", duration: 4},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$20", url: "https://www.showpass.com/o/ranchmans-calgary/" },
+          ],
+        },        {
+          date: "2025-07-03",
+          events: [
+            { time: "07:00 PM", description: "Free Line Dancing Lessons", duration: 3},
+            { time: "09:00 PM", description: "Girl Crush", duration: 3},
+            { time: "06:00 PM", description: "Patio Party", duration: 4},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$20", url: "https://www.showpass.com/o/ranchmans-calgary/" },
+          ],
+        },        {
+          date: "2025-07-03",
+          events: [
+            { time: "07:00 PM", description: "Free Line Dancing Lessons", duration: 3},
+            { time: "09:00 PM", description: "Girl Crush", duration: 3},
+            { time: "06:00 PM", description: "Patio Party", duration: 4},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$20", url: "https://www.showpass.com/o/ranchmans-calgary/" },
+          ],
+        },        {
+          date: "2025-07-03",
+          events: [
+            { time: "07:00 PM", description: "Free Line Dancing Lessons", duration: 3},
+            { time: "09:00 PM", description: "Girl Crush", duration: 3},
+            { time: "06:00 PM", description: "Patio Party", duration: 4},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$20", url: "https://www.showpass.com/o/ranchmans-calgary/" },
+          ],
+        },
+      ],
+      
+    },
   ];
   
