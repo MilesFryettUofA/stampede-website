@@ -647,4 +647,115 @@ export interface TicketTier {
       ],
       
     },
+    {
+      name: "The Big 4 Roadhouse",
+      location: "Big Four, Parking lot, 1801 Big Four Trail SE, Calgary, AB T2G 2W1",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Calgary_Stampede_Logo.svg/320px-Calgary_Stampede_Logo.svg.png",
+
+      days: [
+        {
+          date: "2025-07-03",
+          events: [
+            { time: "09:00 PM", description: "Toque", duration: 5},
+
+          ],
+          ticketTiers: [
+            { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
+          ],
+        },
+        {
+          date: "2025-07-04",
+          events: [
+            { time: "10:00 PM", description: "Natasha Bedingfield", duration: 4},
+          ],
+          ticketTiers: [
+            { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
+          ],
+        },
+        {
+          date: "2025-07-05",
+          events: [
+            { time: "10:30 PM", description: "Smino", duration: 3.5 },
+          ],
+          ticketTiers: [
+            { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
+          ],
+        },
+        {
+          date: "2025-07-06",
+          events: [
+            { time: "08:30 PM", description: "Jason Isbell", duration: 5.5 },
+          ],
+          ticketTiers: [
+            { tier: "Ticketed", price: "TBD", url: "https://www.calgarystampede.com/the-big-four-roadhouse/jason-isbell-the-400-unit" },
+          ],
+        },
+        {
+          date: "2025-07-07",
+          events: [
+            { time: "10:00 PM", description: "TLC", duration: 4 },
+          ],
+          ticketTiers: [
+            { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
+          ],
+        },
+        {
+          date: "2025-07-08",
+          events: [
+            { time: "10:00 PM", description: "De La Soul", duration: 4 },
+
+          ],
+          ticketTiers: [
+            { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
+          ],
+        },
+        {
+          date: "2025-07-09",
+          events: [
+            { time: "10:00 PM", description: "Lil Jon", duration: 4 },
+          ],
+          ticketTiers: [
+            { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
+          ],
+        },
+        {
+          date: "2025-07-10",
+          events: [
+            { time: "10:00 PM", description: "Boys Like Girls", duration: 4 },
+          ],
+          ticketTiers: [
+            { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
+          ],
+        },
+        {
+          date: "2025-07-11",
+          events: [
+            { time: "10:00 PM", description: "Yung Gravy", duration: 4 },
+          ],
+          ticketTiers: [
+            { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
+          ],
+        },
+        {
+          date: "2025-07-12",
+          events: [
+            { time: "10:00 PM", description: "Tom Morello", duration: 4 },
+          ],
+          ticketTiers: [
+            { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
+          ],
+        },
+        {
+          date: "2025-07-13",
+          events: [
+            { time: "09:00 PM", description: "Mike.", duration: 5 },
+          ],
+          ticketTiers: [
+            { tier: "Free", price: "Stampede Admission", url: "https://www.calgarystampede.com/stampede/tickets" },
+          ],
+        },
+      ],
+      
+    },
   ];
+  
