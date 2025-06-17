@@ -38,7 +38,7 @@ export interface TicketTier {
 
           ],
           ticketTiers: [
-            { tier: "General", price: "$100", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
+            { tier: "General", price: "$250", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
         {
@@ -48,87 +48,88 @@ export interface TicketTier {
 
           ],
           ticketTiers: [
-            { tier: "General", price: "$110", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
+            { tier: "General", price: "$200", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
         {
           date: "2025-07-05",
           events: [
-            { time: "05:00 PM", description: "TBA", duration: 9},
+            { time: "05:00 PM", description: "Macklemore /w Timbaland", duration: 9},
 
           ],
           ticketTiers: [
-            { tier: "General", price: "TBA", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
+            { tier: "General", price: "$160", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
         {
           date: "2025-07-06",
           events: [
-            { time: "05:00 PM", description: "Thomas Rhett /w Tucker Wetmore", duration: 9 },
+            { time: "05:00 PM", description: "Thomas Rhett /w Tucker Wetmore", duration: 9},
           ],
           ticketTiers: [
-            { tier: "General", price: "$100", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
+            { tier: "General", price: "$130", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
         {
           date: "2025-07-07",
           events: [
-            { time: "05:00 PM", description: "KYGO", duration: 9 },
+            { time: "05:00 PM", description: "KYGO w/ All American Rejects", duration: 9 },
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$120", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
+          ],
+        },
+        {
+          date: "2025-07-08",
+          events: [
+            { time: "05:00 PM", description: "Fall Out Boy", duration: 9},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$130", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
+          ],
+        },
+        {
+          date: "2025-07-09",
+          events: [
+            { time: "05:00 PM", description: "T-Pain, Jessie Murph", duration: 9},
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$60", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
+          ],
+        },
+        {
+          date: "2025-07-10",
+          events: [
+            { time: "05:00 PM", description: "Jordan Davis", duration: 9},
+            { time: "02:00 PM", description: "Guy Fieri", duration: 3},
+
+
+          ],
+          ticketTiers: [
+            { tier: "General", price: "$60", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
+          ],
+        },
+        {
+          date: "2025-07-11",
+          events: [
+            { time: "05:00 PM", description: "Akon", duration: 9},
+
           ],
           ticketTiers: [
             { tier: "General", price: "$100", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
         {
-          date: "2025-07-08",
-          events: [
-            { time: "05:00 PM", description: "TBA", duration: 9},
-
-          ],
-          ticketTiers: [
-            { tier: "General", price: "TBA", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
-          ],
-        },
-        {
-          date: "2025-07-09",
-          events: [
-            { time: "05:00 PM", description: "TBA", duration: 9},
-
-          ],
-          ticketTiers: [
-            { tier: "General", price: "TBA", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
-          ],
-        },
-        {
-          date: "2025-07-10",
-          events: [
-            { time: "05:00 PM", description: "TBA", duration: 9},
-            { time: "02:00 PM", description: "Guy Fieri", duration: 3},
-
-
-          ],
-          ticketTiers: [
-            { tier: "General", price: "$40", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
-          ],
-        },
-        {
-          date: "2025-07-11",
-          events: [
-            { time: "05:00 PM", description: "TBA", duration: 9},
-
-          ],
-          ticketTiers: [
-            { tier: "General", price: "TBA", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
-          ],
-        },
-        {
           date: "2025-07-12",
           events: [
+            { time: "02:00 PM", description: "Drag Me To Cowboys", duration: 3},
             { time: "05:00 PM", description: "The Red Clay Strays", duration: 9},
 
           ],
           ticketTiers: [
-            { tier: "General", price: "$50", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
+            { tier: "General", price: "$90", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
         {
@@ -138,7 +139,7 @@ export interface TicketTier {
 
           ],
           ticketTiers: [
-            { tier: "General", price: "$80", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
+            { tier: "General", price: "$100", url: "https://www.tixr.com/groups/cowboysmusicfestival" },
           ],
         },
       ],
